@@ -4,6 +4,7 @@ import com.jayway.restassured.response.Response;
 import com.softech.ls360.utlis.UdpGetPropertyFromPropertiesFile;
 import net.thucydides.core.annotations.Step;
 import org.apache.commons.lang3.text.StrBuilder;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,6 +70,8 @@ public class LearnerEnrolledCoursesSteps {
     public Response getLearnerEnrolledCoursesInformation(String tokenToBeSentInHeader, String authorizationType,
                                                          String enrolledCoursesRequestParameters,
                                                          String learnerEnrolledCoursesInformationEndPoint) {
+        DateTime dtBeforeAPIRequest = new DateTime();
+        long current =  dtBeforeAPIRequest.getMillis();
 
         Response responseEnrolledCoursesInformation = rest().
                 given().
@@ -77,6 +80,10 @@ public class LearnerEnrolledCoursesSteps {
                 body(enrolledCoursesRequestParameters).
                 when().
                 post(learnerEnrolledCoursesInformationEndPoint);
+
+        DateTime dtAfterResponse = new DateTime();
+        logger.info("Response Time - Enrolled Courses Information: "
+                + Long.toString(dtAfterResponse.getMillis() - current) + " ms");
 
         return responseEnrolledCoursesInformation;
     }
@@ -100,6 +107,9 @@ public class LearnerEnrolledCoursesSteps {
     public Response getLearnerEnrolledCoursesCount(String tokenToBeSentInHeader, String authorizationType,
                                                    String courseCountRequestParameters,
                                                    String learnerEnrolledCoursesCountEndPoint) {
+        DateTime dt = new DateTime();
+        long current =  dt.getMillis();
+
         Response responseEnrolledCoursesCount = rest().
                 given().
                 header(authorizationType, tokenToBeSentInHeader).
@@ -107,6 +117,10 @@ public class LearnerEnrolledCoursesSteps {
                 body(courseCountRequestParameters).
                 when().
                 post(learnerEnrolledCoursesCountEndPoint);
+
+        DateTime dtAfterResponse = new DateTime();
+        logger.info("Response Time - Enrolled Courses Count: "
+                + Long.toString(dtAfterResponse.getMillis() - current) + " ms");
 
         return responseEnrolledCoursesCount;
     }

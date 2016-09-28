@@ -3,6 +3,7 @@ package com.softech.ls360.runners.api_gateway.steps.serenity;
 import com.jayway.restassured.response.Response;
 import com.softech.ls360.utlis.UdpGetPropertyFromPropertiesFile;
 import net.thucydides.core.annotations.Step;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,10 +46,17 @@ public class AccessTokenSteps {
     public Response requestAccessTokenFromLs360Gateway(String accessTokenEndpoint, String userName, String password) {
         logger.info("Sending Post Request to get Access Token from Gateway API");
 
+        DateTime dt = new DateTime();
+        long current =  dt.getMillis();
+
         Response responseAccessToken = rest().given().auth().basic(userName, password).
-                                    header("Accept", "application/json").
-                                    when().
-                                    post(accessTokenEndpoint);
+                header("Accept", "application/json").
+                when().
+                post(accessTokenEndpoint);
+
+        DateTime dtAfterResponse = new DateTime();
+        logger.info("Response Time - Access Token From Gateway API: "
+                + Long.toString(dtAfterResponse.getMillis() - current) + " ms");
 
         return responseAccessToken;
     }
