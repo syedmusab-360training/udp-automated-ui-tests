@@ -1,6 +1,7 @@
 package com.softech.ls360.runners.udp.steps.serenity;
 
 import com.jayway.restassured.response.Response;
+import com.lms.database.database.JdbcConnection;
 import com.softech.ls360.utlis.UdpGetPropertyFromPropertiesFile;
 import net.thucydides.core.annotations.Step;
 import org.apache.commons.lang3.text.StrBuilder;
@@ -18,6 +19,8 @@ public class LearnerEnrolledCoursesSteps {
     private static final String UDP_ENROLLED_COURSES_PROPERTIES_FILE = "properties/learner_enrolled_courses.properties";
 
     private UdpGetPropertyFromPropertiesFile udpAccessTokenProps = new UdpGetPropertyFromPropertiesFile();
+
+
 
     @Step
     public String getAuthorizationType() {
@@ -124,4 +127,42 @@ public class LearnerEnrolledCoursesSteps {
 
         return responseEnrolledCoursesCount;
     }
+
+    @Step
+    public int getLearnerCourseCount() {
+        JdbcConnection jdbcConnection = new JdbcConnection();
+        int learnerCountInfo = jdbcConnection.getLearnerCountInfo();
+        logger.info("Connected" + learnerCountInfo);
+        return learnerCountInfo;
+
+    }
+
+    @Step
+    public int getLearnerCountNotstarted(){
+
+        JdbcConnection jdbcConnection = new JdbcConnection();
+        int learnerCountInfoNotStarted = jdbcConnection.getLearnerCountNotStartedInfo();
+        logger.info("Learner Course Not Started Count" + learnerCountInfoNotStarted);
+        return learnerCountInfoNotStarted;
+    }
+
+    @Step
+    public int getLearnerCountCompleted(){
+
+        JdbcConnection jdbcConnection = new JdbcConnection();
+        int learnerCountInfoCompleted = jdbcConnection.getLearnerCountCompletedInfo();
+        logger.info("Learner Course Completed Count" + learnerCountInfoCompleted);
+        return learnerCountInfoCompleted;
+
+    }
+
+    @Step
+    public int getLearnerCountSubscription (){
+        JdbcConnection jdbcConnection = new JdbcConnection();
+        int learnerCountInfoSubscription= jdbcConnection.getLearnerCountSubscriptionInfo();
+        logger.info("Learner Course Subscription Count" + learnerCountInfoSubscription);
+        return learnerCountInfoSubscription;
+
+    }
+
 }
