@@ -165,4 +165,10 @@ public class LearnerEnrolledCoursesSteps {
 
     }
 
+    @Step
+    public String getCoursesCountRequestPara() {
+
+        String countType = (("{\"countType\":" + "["));
+        return countType;
+    }
 }
