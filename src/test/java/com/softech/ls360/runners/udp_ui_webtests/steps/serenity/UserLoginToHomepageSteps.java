@@ -1,7 +1,8 @@
 package com.softech.ls360.runners.udp_ui_webtests.steps.serenity;
 
+import com.softech.ls360.pages.LoginPage.MyCoursesVerification;
 import net.thucydides.core.annotations.Step;
-import com.softech.ls360.udp_pages.UdpLoginPage;
+import com.softech.ls360.pages.LoginPage.UdpLoginPage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +13,7 @@ public class UserLoginToHomepageSteps {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginToHomepageSteps.class);
 
     UdpLoginPage udpLoginPage;
+    MyCoursesVerification myCoursesVerification;
 
     @Step
     public void opens_login_page() {
@@ -57,4 +59,13 @@ public class UserLoginToHomepageSteps {
         return errorMessage;
 
     }
+
+    @Step
+    public String verify_page_heading(){
+
+      String pageTitle = myCoursesVerification.verifyPageHeading();
+        return pageTitle;
+    }
+
+
 }

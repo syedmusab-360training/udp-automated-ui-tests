@@ -1,7 +1,7 @@
 package com.softech.ls360.runners.udp_ui_webtests.steps;
 
+import com.softech.ls360.pages.LoginPage.UdpLoginPage;
 import com.softech.ls360.runners.udp_ui_webtests.steps.serenity.UserLoginToHomepageSteps;
-import com.softech.ls360.udp_pages.UdpLoginPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,7 +9,7 @@ import net.thucydides.core.annotations.Steps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Created by syed.musab on 10/14/2016.
@@ -67,6 +67,13 @@ public class UserLoginToHomepageStepDefinition {
        error_text = "Invalid User Name or Password. Please try again.";
        assertEquals(error_text, userLoginToHomepageSteps.get_Error_Message0());
 
+    }
+
+    @Then("^verify the page heading is displayed$")
+    public void verify_the_page_heading_is_displayed() throws Throwable {
+
+        String pageHeading = "My Courses";
+        assertEquals(userLoginToHomepageSteps.verify_page_heading(), pageHeading);
     }
 
 

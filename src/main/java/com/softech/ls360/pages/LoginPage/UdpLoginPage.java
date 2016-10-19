@@ -1,4 +1,4 @@
-package com.softech.ls360.udp_pages;
+package com.softech.ls360.pages.LoginPage;
 
 import com.softech.ls360.actions.AbstractPageActions;
 import com.softech.ls360.utlis.getPropertyValueFromPropertiesFile;
@@ -38,6 +38,9 @@ public class UdpLoginPage extends PageObject {
 
     @FindBy (xpath = "//*[@id='dashboard']/div/div/div/div/div[1]/label")
     public WebElementFacade incorrectMessage;
+
+    @FindBy(css = ".page-heading")
+    public WebElementFacade pageHeading;
 
     public void setValidUsernamePassword() {
 
@@ -89,4 +92,5 @@ public class UdpLoginPage extends PageObject {
         return errorText;
 
     }
+
 }
