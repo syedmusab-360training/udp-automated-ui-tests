@@ -1,6 +1,5 @@
 package com.softech.ls360.runners.udp_ui_webtests.steps;
 
-import com.softech.ls360.pages.LoginPage.UdpLoginPage;
 import com.softech.ls360.runners.udp_ui_webtests.steps.serenity.UserLoginToHomepageSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -9,7 +8,7 @@ import net.thucydides.core.annotations.Steps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by syed.musab on 10/14/2016.
@@ -18,12 +17,10 @@ public class UserLoginToHomepageStepDefinition {
 
     private static final Logger logger = LoggerFactory.getLogger(UserLoginToHomepageSteps.class);
 
-    String message = null;
     String error_text;
 
     @Steps
     UserLoginToHomepageSteps userLoginToHomepageSteps;
-    UdpLoginPage udpLoginPage;
 
     @Given("^user navigates to signIn page$")
     public void user_navigates_to_signIn_page() throws Throwable {
@@ -48,7 +45,7 @@ public class UserLoginToHomepageStepDefinition {
     @Then("^click on dropdown button and select signout$")
     public void click_on_dropdown_button_and_select_signout() throws Throwable {
 
-        userLoginToHomepageSteps.homepageIsDisplayed();
+        userLoginToHomepageSteps.homepageProfileDropdown();
         userLoginToHomepageSteps.click_profile_signout_button();
 
     }
@@ -58,7 +55,6 @@ public class UserLoginToHomepageStepDefinition {
 
         userLoginToHomepageSteps.invalid_userName_Password();
         userLoginToHomepageSteps.click_signIn_button();
-
     }
 
     @Then("^user should get an appropriate error message$")
@@ -76,5 +72,34 @@ public class UserLoginToHomepageStepDefinition {
         assertEquals(userLoginToHomepageSteps.verify_page_heading(), pageHeading);
     }
 
+    @When("^user enters in udp homepage$")
+    public void user_enters_in_udp_homepage() throws Throwable {
+
+        userLoginToHomepageSteps.valid_userName_password();
+        userLoginToHomepageSteps.click_signIn_button();
+        userLoginToHomepageSteps.homepageIsDisplayed();
+
+    }
+
+    @Then("^\"([^\"]*)\" should be displayed in first box$")
+    public void should_be_displayed_in_first_box(String numberOfCourses) throws Throwable {
+
+        numberOfCourses = "Number Of My Courses";
+        assertEquals(userLoginToHomepageSteps.verifyNumberOfCoursesTitle(), numberOfCourses);
+    }
+
+    @Then("^\"([^\"]*)\" should be displayed in second box$")
+    public void should_be_displayed_in_second_box(String subscriptionTitle) throws Throwable {
+
+        subscriptionTitle = "Courses In Your Subscription";
+        assertEquals(userLoginToHomepageSteps.verifySubscriptionTitle(), subscriptionTitle);
+    }
+
+    @Then("^\"([^\"]*)\" should be displayed in third box$")
+    public void should_be_displayed_in_third_box(String completedTitle) throws Throwable {
+
+        completedTitle = "Courses You've Completed";
+        assertEquals(userLoginToHomepageSteps.verifyCompletedCourseTitle(), completedTitle);
+    }
 
 }

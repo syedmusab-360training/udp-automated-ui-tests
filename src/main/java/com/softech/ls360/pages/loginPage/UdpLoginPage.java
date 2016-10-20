@@ -1,4 +1,4 @@
-package com.softech.ls360.pages.LoginPage;
+package com.softech.ls360.pages.loginPage;
 
 import com.softech.ls360.actions.AbstractPageActions;
 import com.softech.ls360.utlis.getPropertyValueFromPropertiesFile;
@@ -37,10 +37,10 @@ public class UdpLoginPage extends PageObject {
     private WebElementFacade profileSighoutbutton;
 
     @FindBy (xpath = "//*[@id='dashboard']/div/div/div/div/div[1]/label")
-    public WebElementFacade incorrectMessage;
+    private WebElementFacade incorrectMessage;
 
     @FindBy(css = ".page-heading")
-    public WebElementFacade pageHeading;
+    private WebElementFacade pageHeading;
 
     public void setValidUsernamePassword() {
 

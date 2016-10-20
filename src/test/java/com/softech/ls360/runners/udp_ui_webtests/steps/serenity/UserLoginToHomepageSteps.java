@@ -1,8 +1,9 @@
 package com.softech.ls360.runners.udp_ui_webtests.steps.serenity;
 
-import com.softech.ls360.pages.LoginPage.MyCoursesVerification;
+import com.softech.ls360.pages.homePage.TitleVerification;
+import com.softech.ls360.pages.homePage.CourseType;
 import net.thucydides.core.annotations.Step;
-import com.softech.ls360.pages.LoginPage.UdpLoginPage;
+import com.softech.ls360.pages.loginPage.UdpLoginPage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +14,8 @@ public class UserLoginToHomepageSteps {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginToHomepageSteps.class);
 
     UdpLoginPage udpLoginPage;
-    MyCoursesVerification myCoursesVerification;
+    TitleVerification titleVerification;
+    CourseType courseType;
 
     @Step
     public void opens_login_page() {
@@ -39,7 +41,7 @@ public class UserLoginToHomepageSteps {
     }
 
     @Step
-    public void homepageIsDisplayed() {
+    public void homepageProfileDropdown() {
 
         udpLoginPage.verifyAndCloseHomepage();
 
@@ -63,9 +65,36 @@ public class UserLoginToHomepageSteps {
     @Step
     public String verify_page_heading(){
 
-      String pageTitle = myCoursesVerification.verifyPageHeading();
+      String pageTitle = titleVerification.verifyPageHeading();
         return pageTitle;
     }
 
+
+    @Step
+    public String verifyNumberOfCoursesTitle(){
+
+        String numberOfCourses = courseType.verifyNumberOfMyCourses();
+        return numberOfCourses;
+    }
+
+    @Step
+    public String verifySubscriptionTitle(){
+
+       String subscriptionTitle = courseType.coursesInYourSubscription();
+        return subscriptionTitle;
+    }
+
+    @Step
+    public String verifyCompletedCourseTitle(){
+
+        String completedCourse = courseType.coursesYouHaveCompleted();
+        return completedCourse;
+    }
+
+    @Step
+    public void homepageIsDisplayed(){
+
+        courseType.homepageDisplayedVerification();
+    }
 
 }

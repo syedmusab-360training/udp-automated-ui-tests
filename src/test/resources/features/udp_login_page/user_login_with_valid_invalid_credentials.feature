@@ -1,4 +1,4 @@
-Feature: Login to Dashboard Homepage
+Feature: Login to udp Homepage
   In order to login into udp portal
   A request valid credentials takes user to udp homepage
   A request with invalid credentials returns an appropriate error message
