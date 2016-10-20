@@ -25,6 +25,12 @@ public class CourseType extends PageObject{
     @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(3) > div > span")
     private WebElementFacade coursesYouHaveCompleted;
 
+    @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(3) > div > h4")
+    private WebElementFacade completedCourseCount;
+
+    @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(2) > div > h4")
+    private WebElementFacade subscriptionCourseCount;
+
     public String verifyNumberOfMyCourses(){
         logger.info("<---------------------------------------------------->");
         logger.info("<------Starting verify Number Of My Courses Test ---->");
@@ -69,4 +75,22 @@ public class CourseType extends PageObject{
         homepageHeader.waitUntilPresent();
         logger.info("header is present");
     }
+
+    public String completedCourseCount(){
+
+        completedCourseCount.waitUntilVisible();
+        String udpCompleedCourseCount = completedCourseCount.getText();
+        return udpCompleedCourseCount;
+
+    }
+
+
+    public String subscriptionCourseCount (){
+
+        subscriptionCourseCount.waitUntilVisible();
+        String udpSubscriptionCourseCount = subscriptionCourseCount.getText();
+        return udpSubscriptionCourseCount;
+    }
+
+
 }

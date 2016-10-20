@@ -88,18 +88,24 @@ public class UserLoginToHomepageStepDefinition {
         assertEquals(userLoginToHomepageSteps.verifyNumberOfCoursesTitle(), numberOfCourses);
     }
 
-    @Then("^\"([^\"]*)\" should be displayed in second box$")
-    public void should_be_displayed_in_second_box(String subscriptionTitle) throws Throwable {
+    @Then("^\"([^\"]*)\" should be displayed in second box with respect to subscription count$")
+    public void should_be_displayed_in_second_box_with_respect_to_subscription_count(String subscriptionTitle) throws Throwable {
 
         subscriptionTitle = "Courses In Your Subscription";
         assertEquals(userLoginToHomepageSteps.verifySubscriptionTitle(), subscriptionTitle);
+       logger.info("Subscription Count is here" + userLoginToHomepageSteps.getLearnerSubscriptionCount());
+        assertEquals(userLoginToHomepageSteps.getLearnerSubscriptionCount(), userLoginToHomepageSteps.subscriptionCount());
     }
 
-    @Then("^\"([^\"]*)\" should be displayed in third box$")
-    public void should_be_displayed_in_third_box(String completedTitle) throws Throwable {
+
+    @Then("^\"([^\"]*)\" should be displayed in third box with respect to completed count$")
+    public void should_be_displayed_in_third_box_with_respect_to_completed_count(String completedTitle) throws Throwable{
 
         completedTitle = "Courses You've Completed";
         assertEquals(userLoginToHomepageSteps.verifyCompletedCourseTitle(), completedTitle);
+        assertEquals(userLoginToHomepageSteps.getLearnerCountCompleted(), userLoginToHomepageSteps.completedCount());
+
+
     }
 
 }

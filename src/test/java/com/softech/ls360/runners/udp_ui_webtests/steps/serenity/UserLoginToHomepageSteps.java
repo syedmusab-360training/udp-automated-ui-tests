@@ -1,5 +1,6 @@
 package com.softech.ls360.runners.udp_ui_webtests.steps.serenity;
 
+import com.softech.ls360.jdbc_vu360_qa.DbConnection;
 import com.softech.ls360.pages.homePage.TitleVerification;
 import com.softech.ls360.pages.homePage.CourseType;
 import net.thucydides.core.annotations.Step;
@@ -95,6 +96,43 @@ public class UserLoginToHomepageSteps {
     public void homepageIsDisplayed(){
 
         courseType.homepageDisplayedVerification();
+    }
+
+    @Step
+    public int getLearnerCountCompleted(){
+
+        DbConnection jdbcConnection = new DbConnection();
+        int learnerCountInfoCompleted = jdbcConnection.getLearnerCountCompletedInfo();
+        logger.info("Learner Course Completed Count" + learnerCountInfoCompleted);
+        return learnerCountInfoCompleted;
+
+    }
+
+
+    @Step
+    public int completedCount(){
+
+      String completedCourse = courseType.completedCourseCount();
+        return Integer.parseInt(completedCourse);
+
+    }
+
+    @Step
+    public int getLearnerSubscriptionCount(){
+
+        DbConnection jdbcConnection = new DbConnection();
+        int learnerCountInfoSubscription = jdbcConnection.getLearnerCountSubscriptionInfo();
+        logger.info("Learner Course Subscription Count" + learnerCountInfoSubscription);
+        return learnerCountInfoSubscription;
+    }
+
+
+    @Step
+    public int subscriptionCount(){
+
+        String subscriptionCount = courseType.subscriptionCourseCount();
+        return Integer.parseInt(subscriptionCount);
+
     }
 
 }
