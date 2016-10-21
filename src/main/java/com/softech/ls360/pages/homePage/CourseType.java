@@ -1,5 +1,6 @@
 package com.softech.ls360.pages.homePage;
 
+import com.softech.ls360.pages.leftPanelNavigation.LearnerTab;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +12,7 @@ import org.slf4j.LoggerFactory;
  */
 public class CourseType extends PageObject{
 
-    private static final Logger logger = LoggerFactory.getLogger(TitleVerification.class);
+    private static final Logger logger = LoggerFactory.getLogger(LearnerTab.class);
 
     @FindBy (css = "#wrapper > nav")
     WebElementFacade homepageHeader;
@@ -30,6 +31,9 @@ public class CourseType extends PageObject{
 
     @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(2) > div > h4")
     private WebElementFacade subscriptionCourseCount;
+
+    @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(1) > div > h4")
+    private WebElementFacade courseCountAllCourses;
 
     public String verifyNumberOfMyCourses(){
         logger.info("<---------------------------------------------------->");
@@ -92,5 +96,12 @@ public class CourseType extends PageObject{
         return udpSubscriptionCourseCount;
     }
 
+
+    public String getCourseCountAll(){
+
+        courseCountAllCourses.waitUntilVisible();
+        String countAllCourses = courseCountAllCourses.getText();
+        return  countAllCourses;
+    }
 
 }

@@ -96,6 +96,44 @@ public class DbConnection {
 
     }
 
+    public int getLearnerCountAllCoursesInfo() {
+
+        ResultSet rsCoursesAll = null;
+        int resultCountAll = 0;
+
+        try {
+            Class.forName(udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.classname", UDP_COURSE_COUNT_PROPERTIES_FILE));
+            conn = DriverManager.getConnection(URL);
+
+            String learnerCountAllInfo = CONSTANT.LEARNERCOUNT_ALL;
+            logger.info("-QUERY:" + learnerCountAllInfo);
+
+            stmt = conn.createStatement();
+            rsCoursesAll = stmt.executeQuery(learnerCountAllInfo);
+
+            if (rsCoursesAll.next()){
+                resultCountAll = rsCoursesAll.getInt(1);
+            }
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        finally {
+            try {
+                stmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        logger.info("-Result:->"+ resultCountAll);
+        return resultCountAll;
+
+    }
+
     }
 
 

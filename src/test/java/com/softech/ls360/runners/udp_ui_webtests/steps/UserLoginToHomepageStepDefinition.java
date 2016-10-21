@@ -81,11 +81,13 @@ public class UserLoginToHomepageStepDefinition {
 
     }
 
-    @Then("^\"([^\"]*)\" should be displayed in first box$")
-    public void should_be_displayed_in_first_box(String numberOfCourses) throws Throwable {
+    @Then("^\"([^\"]*)\" should be displayed in first box with respect to all courses count$")
+    public void should_be_displayed_in_first_box_with_respect_to_all_courses_count(String numberOfCourses) throws Throwable {
 
         numberOfCourses = "Number Of My Courses";
         assertEquals(userLoginToHomepageSteps.verifyNumberOfCoursesTitle(), numberOfCourses);
+        assertEquals(userLoginToHomepageSteps.getLearnerCourseCountAll(), userLoginToHomepageSteps.courseCountAll());
+        logger.info("Count All Courses" + userLoginToHomepageSteps.getLearnerCourseCountAll() + userLoginToHomepageSteps.courseCountAll());
     }
 
     @Then("^\"([^\"]*)\" should be displayed in second box with respect to subscription count$")
@@ -93,10 +95,9 @@ public class UserLoginToHomepageStepDefinition {
 
         subscriptionTitle = "Courses In Your Subscription";
         assertEquals(userLoginToHomepageSteps.verifySubscriptionTitle(), subscriptionTitle);
-       logger.info("Subscription Count is here" + userLoginToHomepageSteps.getLearnerSubscriptionCount());
+       logger.info("Subscription Count is here" + userLoginToHomepageSteps.getLearnerCourseCountAll());
         assertEquals(userLoginToHomepageSteps.getLearnerSubscriptionCount(), userLoginToHomepageSteps.subscriptionCount());
     }
-
 
     @Then("^\"([^\"]*)\" should be displayed in third box with respect to completed count$")
     public void should_be_displayed_in_third_box_with_respect_to_completed_count(String completedTitle) throws Throwable{
@@ -105,6 +106,73 @@ public class UserLoginToHomepageStepDefinition {
         assertEquals(userLoginToHomepageSteps.verifyCompletedCourseTitle(), completedTitle);
         assertEquals(userLoginToHomepageSteps.getLearnerCountCompleted(), userLoginToHomepageSteps.completedCount());
 
+    }
+
+    @Then("^Verify that on Dashboard page left panel, main heading should be \"([^\"]*)\"$")
+    public void verify_that_on_Dashboard_page_left_panel_main_heading_should_be(String dashboardTitle) throws Throwable {
+        dashboardTitle = "Dashboard";
+        assertEquals(userLoginToHomepageSteps.verifyDashboardTitle(), dashboardTitle);
+    }
+
+    @Then("^Verify that on Dashboard page left panel, first submenu should be \"([^\"]*)\"$")
+    public void verify_that_on_Dashboard_page_left_panel_first_submenu_should_be(String learnerSubheading) throws Throwable {
+        learnerSubheading = "Learner";
+        assertEquals(userLoginToHomepageSteps.verifyLearnerTitle(), learnerSubheading);
+    }
+
+    @Then("^Verify that on Dashboard page left panel, second submenu should be \"([^\"]*)\"$")
+    public void verify_that_on_Dashboard_page_left_panel_second_submenu_should_be(String authorSubheading) throws Throwable {
+
+        authorSubheading = "Author";
+        assertEquals(userLoginToHomepageSteps.verifyAuthorTitle(), authorSubheading);
+    }
+
+    @Then("^Verify that on Dashboard page left panel, third submenu should be \"([^\"]*)\"$")
+    public void verify_that_on_Dashboard_page_left_panel_third_submenu_should_be(String managerSubheading) throws Throwable {
+
+        managerSubheading = "Manager";
+        assertEquals(userLoginToHomepageSteps.verifyManagerTitle(), managerSubheading);
+
+    }
+
+    @Then("^Verify that on Dashboard page left panel, fourth submenu should be \"([^\"]*)\"$")
+    public void verify_that_on_Dashboard_page_left_panel_fourth_submenu_should_be(String resourcesSubheading) throws Throwable {
+
+        resourcesSubheading = "Resources";
+        assertEquals(userLoginToHomepageSteps.verifyResourcesTitle(), resourcesSubheading);
+    }
+    @Then("^Verify that first tab is \"([^\"]*)\"$")
+    public void verify_that_first_tab_is(String myCoursesTab) throws Throwable {
+
+        myCoursesTab = "My Courses";
+        assertEquals(userLoginToHomepageSteps.verifyMycoursesfromLeftPanel(), myCoursesTab);
+
+    }
+
+    @Then("^Verify that second tab is \"([^\"]*)\"$")
+    public void verify_that_second_tab_is(String mySubscription) throws Throwable {
+
+        mySubscription = "My Subscriptions";
+        assertEquals(userLoginToHomepageSteps.verifyMySubscriptionfromLeftPanel(), mySubscription);
+    }
+
+    @Then("^Verify that third tab is \"([^\"]*)\"$")
+    public void verify_that_third_tab_is(String transCert) throws Throwable {
+        transCert = "Transcripts & Certificates";
+        assertEquals(userLoginToHomepageSteps.verifyTransCertfromLeftPanel(), transCert);
+    }
+
+    @Then("^Verify under author menu, first tab is \"([^\"]*)\"$")
+    public void verify_under_author_menu_first_tab_is(String courseReport) throws Throwable {
+        courseReport = "Course Reports";
+        assertEquals(userLoginToHomepageSteps.verifyCourseReportTextfromLeftPanel(), courseReport);
+
+    }
+
+    @Then("^Verify under author menu, second tab \"([^\"]*)\"$")
+    public void verify_under_author_menu_second_tab(String createManageCourses) throws Throwable {
+
+        createManageCourses = "Create & Manage Courses";
 
     }
 

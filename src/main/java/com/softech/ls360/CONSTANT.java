@@ -47,4 +47,20 @@ public class CONSTANT {
                     "AND LCS.STATUS ="
                     + udpsqlqueries.getPropertyValueFromPropertiesFile
                     ("learnerCount.status.subscription", UDP_COURSE_COUNT_PROPERTIES_FILE);
+
+
+    // !!------Queries for Learner Course Count - All Courses Count---!!
+
+    public static final String LEARNERCOUNT_ALL =
+            "select COUNT(LE.ID) from LEARNERENROLLMENT LE\n" +
+                    "INNER JOIN LEARNER L ON LE.LEARNER_ID = L.ID\n" +
+                    "INNER JOIN VU360USER vu ON vu.ID = L.VU360USER_ID\n" +
+                    "INNER JOIN LEARNERCOURSESTATISTICS LCS ON LCS.LEARNERENROLLMENT_ID = LE.ID\n" +
+                    "WHERE le.enrollmentstatus =" +
+                    udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.enrollmentstatus",
+                            UDP_COURSE_COUNT_PROPERTIES_FILE)
+                    + "and vu.USERNAME ="+
+                    udpsqlqueries.getPropertyValueFromPropertiesFile
+                            ("learnerCount.information.vuUsername",
+                                    UDP_COURSE_COUNT_PROPERTIES_FILE);
 }

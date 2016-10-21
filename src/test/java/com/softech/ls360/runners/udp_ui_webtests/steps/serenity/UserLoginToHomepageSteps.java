@@ -1,7 +1,8 @@
 package com.softech.ls360.runners.udp_ui_webtests.steps.serenity;
 
 import com.softech.ls360.jdbc_vu360_qa.DbConnection;
-import com.softech.ls360.pages.homePage.TitleVerification;
+import com.softech.ls360.pages.leftPanelNavigation.AuthorTab;
+import com.softech.ls360.pages.leftPanelNavigation.LearnerTab;
 import com.softech.ls360.pages.homePage.CourseType;
 import net.thucydides.core.annotations.Step;
 import com.softech.ls360.pages.loginPage.UdpLoginPage;
@@ -15,8 +16,9 @@ public class UserLoginToHomepageSteps {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginToHomepageSteps.class);
 
     UdpLoginPage udpLoginPage;
-    TitleVerification titleVerification;
+    LearnerTab learnerTab;
     CourseType courseType;
+    AuthorTab authorTab;
 
     @Step
     public void opens_login_page() {
@@ -66,7 +68,7 @@ public class UserLoginToHomepageSteps {
     @Step
     public String verify_page_heading(){
 
-      String pageTitle = titleVerification.verifyPageHeading();
+      String pageTitle = learnerTab.verifyPageHeading();
         return pageTitle;
     }
 
@@ -126,12 +128,95 @@ public class UserLoginToHomepageSteps {
         return learnerCountInfoSubscription;
     }
 
-
     @Step
     public int subscriptionCount(){
 
         String subscriptionCount = courseType.subscriptionCourseCount();
         return Integer.parseInt(subscriptionCount);
+
+    }
+
+
+    @Step
+    public int courseCountAll(){
+        String courseCountAll = courseType.getCourseCountAll();
+        return Integer.parseInt(courseCountAll);
+
+    }
+
+    @Step
+    public int getLearnerCourseCountAll(){
+
+        DbConnection jdbcConnection = new DbConnection();
+        int learnerCourseCountAll = jdbcConnection.getLearnerCountAllCoursesInfo();
+        logger.info("Learner Course Subscription Count" + learnerCourseCountAll);
+        return learnerCourseCountAll;
+    }
+
+    @Step
+    public String verifyDashboardTitle(){
+
+        String titleVerificationDashboard = learnerTab.verifyDashboardTitle();
+        return titleVerificationDashboard;
+    }
+
+    @Step
+    public String verifyLearnerTitle(){
+
+        String titleVerificationLearner = learnerTab.verifyLearnerTitleFromLeftPanel();
+        return titleVerificationLearner;
+    }
+
+    @Step
+    public String verifyAuthorTitle(){
+
+        String titleVerificationAuthor = learnerTab.verifyAuthorTitleFromLeftPanel();
+        return titleVerificationAuthor;
+    }
+
+    @Step
+    public String verifyManagerTitle(){
+
+        String managerVerificationAuthor = learnerTab.verifyManagerTitleFromLeftPanel();
+        return managerVerificationAuthor;
+    }
+
+    @Step
+    public String verifyResourcesTitle(){
+
+        String resourcesVerificationAuthor = learnerTab.verifyResourcesTitleFromLeftPanel();
+        return resourcesVerificationAuthor;
+    }
+
+    @Step
+    public String verifyMycoursesfromLeftPanel(){
+
+        String myCoursesLeftPanel = learnerTab.verifyMyCoursesFromLearnerMenu();
+        return myCoursesLeftPanel;
+
+    }
+
+    @Step
+    public String verifyMySubscriptionfromLeftPanel(){
+
+        String mySubscriptionsLeftPanel = learnerTab.verifyMySubscriptionFromLearnerMenu();
+        return mySubscriptionsLeftPanel;
+
+    }
+
+    @Step
+    public String verifyTransCertfromLeftPanel(){
+
+        String transCert = learnerTab.verifyTranscriptionCertFromLearnerMenu();
+        return transCert;
+
+    }
+
+    @Step
+    public String  verifyCourseReportTextfromLeftPanel(){
+
+        String courseReport = authorTab.clickAuthorTab();
+        return courseReport;
 
     }
 
