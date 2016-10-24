@@ -1,7 +1,7 @@
-Feature: Login to udp Homepage
-  In order to login into udp portal
+Feature: In order to login into udp portal
   A request valid credentials takes user to udp homepage
   A request with invalid credentials returns an appropriate error message
+  Login to udp Homepage
 
   Scenario: Signin with valid credentials
     Given user navigates to signIn page

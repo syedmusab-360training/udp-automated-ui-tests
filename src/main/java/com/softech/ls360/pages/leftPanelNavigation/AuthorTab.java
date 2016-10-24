@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  */
 public class AuthorTab extends PageObject {
 
-    private static final Logger logger = LoggerFactory.getLogger(LearnerTab.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthorTab.class);
     private static final String UDP_SELENIUM_DATA_PROPERTIES_FILE = "properties/udp_selenium_data.properties";
     private getPropertyValueFromPropertiesFile udpUiDataProps = new getPropertyValueFromPropertiesFile();
 
@@ -29,7 +29,7 @@ public class AuthorTab extends PageObject {
     public String clickAuthorTab(){
 
         logger.info("<---------------------------------------------------->");
-        logger.info("<-  Starting UDP Dashboard title verification Test  ->");
+        logger.info("<-  Starting UDP left page author verification Test ->");
         logger.info("<---------------------------------------------------->");
 
         authorClick.waitUntilVisible();
@@ -42,6 +42,25 @@ public class AuthorTab extends PageObject {
         String courseReportText = courseReport.getText();
         logger.info("Course report text is here"+ courseReportText);
         return courseReportText;
+    }
+
+
+    public String verifyCreateManageCourses(){
+
+        logger.info("<--------------------------------------------------------------------->");
+        logger.info("<-Starting UDP left page author verification Test create and manager ->");
+        logger.info("<--------------------------------------------------------------------->");
+
+        authorClick.waitUntilVisible();
+        logger.info("Clicked");
+
+        createManage.waitUntilVisible();
+
+        String createManagerCourseText = createManage.getText();
+        logger.info("Create & Manage courses text is here"+ createManagerCourseText);
+
+        return  createManagerCourseText;
+
     }
 
 

@@ -1,7 +1,7 @@
-Feature: course type verification
-  In order to get course type heading
+Feature: In order to get course type heading
   A request with valid credentials takes user to udp homepage
   verify it displayed courses type titles
+  course type verification
 
   Scenario: Verify header box titles
     Given user navigates to signIn page

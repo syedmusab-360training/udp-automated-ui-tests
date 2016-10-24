@@ -1,11 +1,13 @@
 package com.softech.ls360.runners.udp_ui_webtests.steps.serenity;
 
 import com.softech.ls360.jdbc_vu360_qa.DbConnection;
+import com.softech.ls360.pages.homePage.CourseType;
 import com.softech.ls360.pages.leftPanelNavigation.AuthorTab;
 import com.softech.ls360.pages.leftPanelNavigation.LearnerTab;
-import com.softech.ls360.pages.homePage.CourseType;
-import net.thucydides.core.annotations.Step;
+import com.softech.ls360.pages.leftPanelNavigation.ManagerTab;
+import com.softech.ls360.pages.leftPanelNavigation.ResourcesTab;
 import com.softech.ls360.pages.loginPage.UdpLoginPage;
+import net.thucydides.core.annotations.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +21,8 @@ public class UserLoginToHomepageSteps {
     LearnerTab learnerTab;
     CourseType courseType;
     AuthorTab authorTab;
+    ManagerTab managerTab;
+    ResourcesTab resourcesTab;
 
     @Step
     public void opens_login_page() {
@@ -205,7 +209,7 @@ public class UserLoginToHomepageSteps {
     }
 
     @Step
-    public String verifyTransCertfromLeftPanel(){
+    public String verifyTransCertFromLeftPanel(){
 
         String transCert = learnerTab.verifyTranscriptionCertFromLearnerMenu();
         return transCert;
@@ -220,4 +224,69 @@ public class UserLoginToHomepageSteps {
 
     }
 
+    @Step
+    public String verifyCreateManageTextFromLeftPanel(){
+
+        String courseManagerCreate = authorTab.verifyCreateManageCourses();
+        return courseManagerCreate;
+
+    }
+
+    @Step
+    public String verifyManagerTab(){
+
+        String manageTab = managerTab.verifymanagerButtonIsDisplayed();
+        return manageTab;
+    }
+
+    @Step
+    public String verifyManageUserTextFromLeftPanel(){
+
+        String manageUserText = managerTab.verifyManageUser();
+        return manageUserText;
+
+    }
+
+    @Step
+    public String verifyEnrollUserTextFromLeftPanel(){
+
+        String enrollUserText = managerTab.verifyEnrollUsers();
+        return enrollUserText;
+    }
+
+    @Step
+    public String verifyRunReportsTextFromLeftPanel(){
+
+        String runReportsText = managerTab.verifyRunReports();
+        return runReportsText;
+    }
+
+    @Step
+    public String verifyResourceText(){
+
+        String resourceText = resourcesTab.verifyResourceText();
+        return resourceText;
+
+    }
+
+    @Step
+    public String verifyShopCourses(){
+
+        String shopCoursesText = resourcesTab.verifyShopCourses();
+        return shopCoursesText;
+    }
+
+    @Step
+    public String verifyBrowserCourses(){
+
+        String browseFreeCoursesText = resourcesTab.verifyBrowseFreeCourses();
+        return browseFreeCoursesText;
+    }
+
+    @Step
+    public String verifySupportForum(){
+
+        String supportForumText = resourcesTab.verifysupportForum();
+        return supportForumText;
+    }
 }

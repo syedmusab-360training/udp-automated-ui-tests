@@ -1,7 +1,7 @@
-Feature: Homepage title verification
-  In order to verify homepage title
+Feature: In order to verify homepage title
   A request with valid credentials takes user to udp homepage
   verify it displayed page heading
+  Homepage title verification
 
   Scenario: Verify udp page title
     Given user navigates to signIn page

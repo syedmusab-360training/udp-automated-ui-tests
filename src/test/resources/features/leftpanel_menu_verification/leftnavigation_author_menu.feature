@@ -1,7 +1,7 @@
-Feature: Author Menu Verification From Left Panel Navigation
-  In order to verify author menu
+Feature: In order to verify author menu
   user navigates to udp homepage
   user should see author menu and sub menus at left panel
+  Author Menu Verification
 
   Scenario: Author Menu Verification
     Given user navigates to signIn page

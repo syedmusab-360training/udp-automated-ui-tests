@@ -1,5 +1,6 @@
 package com.softech.ls360.runners.udp_ui_webtests.steps;
 
+import com.softech.ls360.pages.leftPanelNavigation.ManagerTab;
 import com.softech.ls360.runners.udp_ui_webtests.steps.serenity.UserLoginToHomepageSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -16,6 +17,8 @@ import static org.junit.Assert.assertEquals;
 public class UserLoginToHomepageStepDefinition {
 
     private static final Logger logger = LoggerFactory.getLogger(UserLoginToHomepageSteps.class);
+
+    ManagerTab managerTab;
 
     String error_text;
 
@@ -159,7 +162,7 @@ public class UserLoginToHomepageStepDefinition {
     @Then("^Verify that third tab is \"([^\"]*)\"$")
     public void verify_that_third_tab_is(String transCert) throws Throwable {
         transCert = "Transcripts & Certificates";
-        assertEquals(userLoginToHomepageSteps.verifyTransCertfromLeftPanel(), transCert);
+        assertEquals(userLoginToHomepageSteps.verifyTransCertFromLeftPanel(), transCert);
     }
 
     @Then("^Verify under author menu, first tab is \"([^\"]*)\"$")
@@ -173,6 +176,65 @@ public class UserLoginToHomepageStepDefinition {
     public void verify_under_author_menu_second_tab(String createManageCourses) throws Throwable {
 
         createManageCourses = "Create & Manage Courses";
+        assertEquals(userLoginToHomepageSteps.verifyCreateManageTextFromLeftPanel(), createManageCourses);
+
+    }
+
+
+    @Then("^Verify that on Dashboard page left panel, third tab should be \"([^\"]*)\"$")
+    public void verify_that_on_Dashboard_page_left_panel_third_tab_should_be(String managerText) throws Throwable {
+
+        managerText = "Manager";
+        assertEquals(userLoginToHomepageSteps.verifyManagerTab(), managerText);
+    }
+
+
+    @Then("^Verify under manager menu, first tab is \"([^\"]*)\"$")
+    public void verify_under_manager_menu_first_tab_is(String managerUser) throws Throwable {
+        managerUser = "Manage Users";
+        assertEquals(userLoginToHomepageSteps.verifyManageUserTextFromLeftPanel(), managerUser);
+    }
+
+
+    @Then("^Verify under manager menu, second tab is \"([^\"]*)\"$")
+    public void verify_under_manager_menu_second_tab_is(String enrollUser) throws Throwable {
+
+        enrollUser = "Enroll Users";
+        assertEquals(userLoginToHomepageSteps.verifyEnrollUserTextFromLeftPanel(), enrollUser);
+
+    }
+
+    @Then("^Verify under manager menu, third tab is \"([^\"]*)\"$")
+    public void verify_under_manager_menu_third_tab_is(String runReport) throws Throwable {
+
+        runReport = "Run Reports";
+        assertEquals(userLoginToHomepageSteps.verifyRunReportsTextFromLeftPanel(), runReport);
+    }
+
+    @Then("^Verify that on Dashboard page left panel, fourth tab should be \"([^\"]*)\"$")
+    public void verify_that_on_Dashboard_page_left_panel_fourth_tab_should_be(String resourceText) throws Throwable {
+        resourceText = "Resources";
+        assertEquals(userLoginToHomepageSteps.verifyResourceText(), resourceText);
+
+    }
+
+    @Then("^Verify under resource menu, first tab is \"([^\"]*)\"$")
+    public void verify_under_resource_menu_first_tab_is(String shopCoursesText) throws Throwable {
+        shopCoursesText = "Shop Courses";
+        assertEquals(userLoginToHomepageSteps.verifyShopCourses(), shopCoursesText);
+
+    }
+
+    @Then("^Verify under resource menu, second tab is \"([^\"]*)\"$")
+    public void verify_under_resource_menu_second_tab_is(String browseFreeCourses) throws Throwable {
+        browseFreeCourses = "Browse Free Courses";
+        assertEquals(userLoginToHomepageSteps.verifyBrowserCourses(), browseFreeCourses);
+    }
+
+    @Then("^Verify under resource menu, third tab is \"([^\"]*)\"$")
+    public void verify_under_resource_menu_third_tab_is(String supportForum) throws Throwable {
+        supportForum = "Support Forum";
+        assertEquals(userLoginToHomepageSteps.verifySupportForum(), supportForum);
 
     }
 

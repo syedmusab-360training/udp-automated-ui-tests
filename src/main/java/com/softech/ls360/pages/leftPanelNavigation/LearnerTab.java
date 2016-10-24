@@ -16,7 +16,7 @@ public class LearnerTab extends PageObject {
     private static final String UDP_SELENIUM_DATA_PROPERTIES_FILE = "properties/udp_selenium_data.properties";
     private getPropertyValueFromPropertiesFile udpUiDataProps = new getPropertyValueFromPropertiesFile();
 
-    @FindBy(css = "#dashboard .page-heading")
+    @FindBy(css = "#wrapper > div.main > div > h1")
     private WebElementFacade pageHeading;
 
     @FindBy (css = "#wrapper > div.sidebar > h4 > span")
@@ -48,6 +48,7 @@ public class LearnerTab extends PageObject {
         logger.info("<------      Starting UDP Heading Test         ------>");
         logger.info("<---------------------------------------------------->");
 
+        pageHeading.waitUntilPresent();
         pageHeading.waitUntilVisible();
         logger.info("wait here");
 

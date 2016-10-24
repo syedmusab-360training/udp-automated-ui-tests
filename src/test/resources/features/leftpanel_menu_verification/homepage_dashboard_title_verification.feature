@@ -1,7 +1,7 @@
-Feature: Dashboard Title Verification
-  In order to verify dashboard title verification
+Feature: In order to verify dashboard title verification
   user navigates to udp homepage
   user should see Dashboard title at left panel
+  Dashboard Title Verification
 
   Scenario: Left Panel Title Verification
     Given user navigates to signIn page

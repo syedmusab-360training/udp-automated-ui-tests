@@ -1,7 +1,7 @@
-Feature: Learner Menu Verification From Left Panel Navigation
-  In order to verify learner menu
+Feature: In order to verify learner menu
   user navigates to udp homepage
   user should see Learner menu and sub menus at left panel
+  Learner Menu Verification
 
   Scenario: Learner Menu Verification
     Given user navigates to signIn page
