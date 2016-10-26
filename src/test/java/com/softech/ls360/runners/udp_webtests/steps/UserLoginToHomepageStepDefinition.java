@@ -1,7 +1,7 @@
-package com.softech.ls360.runners.udp_ui_webtests.steps;
+package com.softech.ls360.runners.udp_webtests.steps;
 
 import com.softech.ls360.pages.leftPanelNavigation.ManagerTab;
-import com.softech.ls360.runners.udp_ui_webtests.steps.serenity.UserLoginToHomepageSteps;
+import com.softech.ls360.runners.udp_webtests.steps.serenity.UserLoginToHomepageSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

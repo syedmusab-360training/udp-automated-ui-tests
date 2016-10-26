@@ -30,17 +30,20 @@ public class UdpLoginPage extends PageObject {
     @FindBy (css = ".btn.btn-primary")
     private WebElementFacade signInButton;
 
-    @FindBy (xpath = ".//*[@id='wrapper']/nav/ul/li[2]/button")
+    @FindBy (css = ".dropdown-toggle")
     private WebElementFacade profileDropDown;
 
     @FindBy (css = ".dropdown-menu.dropdown-menu-right>li>a[href='/LS360Dashboard/sign-out']")
     private WebElementFacade profileSighoutbutton;
 
-    @FindBy (xpath = "//*[@id='dashboard']/div/div/div/div/div[1]/label")
+    @FindBy (css = ".control-label")
     private WebElementFacade incorrectMessage;
 
     @FindBy(css = ".page-heading")
     private WebElementFacade pageHeading;
+
+    String userLearnerMode = udpUiDataProps.getPropertyValueFromPropertiesFile("udp.learnerMode.user", UDP_SELENIUM_DATA_PROPERTIES_FILE);
+    String passwordLearnerMode = udpUiDataProps.getPropertyValueFromPropertiesFile("udp.learnerMode.password", UDP_SELENIUM_DATA_PROPERTIES_FILE);
 
     public void setValidUsernamePassword() {
 
@@ -49,7 +52,7 @@ public class UdpLoginPage extends PageObject {
         logger.info("<---------------------------------------------------->");
 
         this.userName.clear();
-        this.userName.sendKeys(udpUiDataProps.getPropertyValueFromPropertiesFile("udp_valid_userName", UDP_SELENIUM_DATA_PROPERTIES_FILE));
+        this.userName.type(udpUiDataProps.getPropertyValueFromPropertiesFile("udp_valid_userName", UDP_SELENIUM_DATA_PROPERTIES_FILE));
         logger.info("userName Set");
 
         this.password.clear();
@@ -59,11 +62,11 @@ public class UdpLoginPage extends PageObject {
 
     public void setInvalidUsernamePassword(){
         this.userName.clear();
-        this.userName.sendKeys(udpUiDataProps.getPropertyValueFromPropertiesFile("udp_invalid_userName", UDP_SELENIUM_DATA_PROPERTIES_FILE));
+        this.userName.type(udpUiDataProps.getPropertyValueFromPropertiesFile("udp_invalid_userName", UDP_SELENIUM_DATA_PROPERTIES_FILE));
         logger.info("Invalid userName Set");
 
         this.password.clear();
-        this.password.sendKeys(udpUiDataProps.getPropertyValueFromPropertiesFile("udp_invalid_password", UDP_SELENIUM_DATA_PROPERTIES_FILE));
+        this.password.type(udpUiDataProps.getPropertyValueFromPropertiesFile("udp_invalid_password", UDP_SELENIUM_DATA_PROPERTIES_FILE));
         logger.info("Invalid Password Set");
 
         }
@@ -90,6 +93,14 @@ public class UdpLoginPage extends PageObject {
     public String displayedIncorrectMessage(){
         String errorText = incorrectMessage.getText();
         return errorText;
+
+    }
+
+    public void loginLearnerAccount(){
+
+     this.userName.sendKeys(udpUiDataProps.getPropertyValueFromPropertiesFile("udp.learnerMode.user", UDP_SELENIUM_DATA_PROPERTIES_FILE));
+     this.password.sendKeys(udpUiDataProps.getPropertyValueFromPropertiesFile("udp.learnerMode.password", UDP_SELENIUM_DATA_PROPERTIES_FILE));
+     signInButton.click();
 
     }
 

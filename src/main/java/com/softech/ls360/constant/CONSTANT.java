@@ -1,4 +1,4 @@
-package com.softech.ls360;
+package com.softech.ls360.constant;
 
 import com.softech.ls360.jdbc_vu360_qa.DbConnection;
 import com.softech.ls360.utlis.getPropertyValueFromPropertiesFile;

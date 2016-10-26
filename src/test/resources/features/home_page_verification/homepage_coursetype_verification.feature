@@ -1,4 +1,4 @@
-Feature: In order to get course type heading
+Feature: In order to verify course counts on homepage
   A request with valid credentials takes user to udp homepage
   verify it displayed courses type titles
   course type verification

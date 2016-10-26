@@ -1,4 +1,4 @@
-package com.softech.ls360.runners.udp_ui_webtests;
+package com.softech.ls360.runners.udp_webtests;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;

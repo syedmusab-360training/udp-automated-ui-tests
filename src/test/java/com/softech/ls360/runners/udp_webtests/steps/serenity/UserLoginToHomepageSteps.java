@@ -1,4 +1,4 @@
-package com.softech.ls360.runners.udp_ui_webtests.steps.serenity;
+package com.softech.ls360.runners.udp_webtests.steps.serenity;
 
 import com.softech.ls360.jdbc_vu360_qa.DbConnection;
 import com.softech.ls360.pages.homePage.CourseType;
@@ -288,5 +288,19 @@ public class UserLoginToHomepageSteps {
 
         String supportForumText = resourcesTab.verifysupportForum();
         return supportForumText;
+    }
+
+    @Step
+    public void openLearnerMode(){
+        udpLoginPage.loginLearnerAccount();
+
+    }
+
+    @Step
+    public String verifyResourceInLearner(){
+
+        String resource = resourcesTab.verifyResourceTextInLearnerMode();
+        return resource;
+
     }
 }

@@ -30,6 +30,9 @@ public class ResourcesTab extends PageObject {
     @FindBy (css = "#wrapper > div.sidebar > div > div:nth-child(1) > button > span")
     private WebElementFacade learnerTitleLeftPanel;
 
+    @FindBy(css = "#wrapper > div.sidebar > div > div:nth-child(2) > button")
+    private WebElementFacade resourcesTextInLearner;
+
     public String verifyResourceText(){
 
         logger.info("<---------------------------------------------------->");
@@ -80,6 +83,20 @@ public class ResourcesTab extends PageObject {
         String supportForumText = supportForum.getText();
         logger.info("Support Forum Courses text" + supportForumText);
         return supportForumText;
+    }
+
+
+    public String verifyResourceTextInLearnerMode(){
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<---verifying resource tab Test  in Learner Mode----->");
+        logger.info("<---------------------------------------------------->");
+
+        resourcesTextInLearner.waitUntilVisible();
+        String resourceTabTextInLearner = resourcesTextInLearner.getText();
+        logger.info("resource text is here in Learner" + resourceTabTextInLearner);
+        return resourceTabTextInLearner;
+
     }
 
 }

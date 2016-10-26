@@ -1,6 +1,6 @@
 package com.softech.ls360.jdbc_vu360_qa;
 
-import com.softech.ls360.CONSTANT;
+import com.softech.ls360.constant.CONSTANT;
 import com.softech.ls360.utlis.getPropertyValueFromPropertiesFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
