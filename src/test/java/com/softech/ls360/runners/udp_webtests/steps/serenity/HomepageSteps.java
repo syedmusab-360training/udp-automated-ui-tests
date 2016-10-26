@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by syed.musab on 10/14/2016.
  */
-public class UserLoginToHomepageSteps {
-    private static final Logger logger = LoggerFactory.getLogger(UserLoginToHomepageSteps.class);
+public class HomepageSteps {
+    private static final Logger logger = LoggerFactory.getLogger(HomepageSteps.class);
 
     UdpLoginPage udpLoginPage;
     LearnerTab learnerTab;
