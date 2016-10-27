@@ -21,10 +21,10 @@ public class UdpLoginPage extends PageObject {
     private getPropertyValueFromPropertiesFile udpUiDataProps = new getPropertyValueFromPropertiesFile();
     AbstractPageActions abstractPageActions = new AbstractPageActions();
 
-    @FindBy(css = ".form-control[name='email']")
+    @FindBy(css = "#dashboard > div > div > div > div > div:nth-child(2) > div > input")
     private WebElementFacade userName;
 
-    @FindBy(css = ".form-control[name='pass']")
+    @FindBy(css = "#dashboard > div > div > div > div > div:nth-child(3) > div > input")
     private WebElementFacade password;
 
     @FindBy (css = ".btn.btn-primary")
@@ -98,9 +98,17 @@ public class UdpLoginPage extends PageObject {
 
     public void loginLearnerAccount(){
 
-     this.userName.sendKeys(udpUiDataProps.getPropertyValueFromPropertiesFile("udp.learnerMode.user", UDP_SELENIUM_DATA_PROPERTIES_FILE));
-     this.password.sendKeys(udpUiDataProps.getPropertyValueFromPropertiesFile("udp.learnerMode.password", UDP_SELENIUM_DATA_PROPERTIES_FILE));
-     signInButton.click();
+     logger.info("starting learner mode test");
+
+     this.userName.type(udpUiDataProps.getPropertyValueFromPropertiesFile("udp.learnerMode.user",
+             UDP_SELENIUM_DATA_PROPERTIES_FILE));
+        logger.info("userName Set");
+
+        this.password.type(udpUiDataProps.getPropertyValueFromPropertiesFile("udp.learnerMode.password",
+                UDP_SELENIUM_DATA_PROPERTIES_FILE));
+        logger.info("Password Set");
+
+        signInButton.click();
 
     }
 

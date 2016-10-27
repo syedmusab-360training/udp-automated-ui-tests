@@ -50,9 +50,6 @@ public class CourseType extends PageObject{
     }
 
     public String coursesInYourSubscription(){
-        logger.info("<---------------------------------------------------->");
-        logger.info("<------     courses In Your Subscription         ---->");
-        logger.info("<---------------------------------------------------->");
 
         coursesInYourSubscription.waitUntilVisible();
         String Subscription = coursesInYourSubscription.getText();

@@ -2,6 +2,7 @@ package com.softech.ls360.runners.udp_webtests.steps.serenity;
 
 import com.softech.ls360.jdbc_vu360_qa.DbConnection;
 import com.softech.ls360.pages.homePage.CourseType;
+import com.softech.ls360.pages.homePage.SearchBar;
 import com.softech.ls360.pages.leftPanelNavigation.AuthorTab;
 import com.softech.ls360.pages.leftPanelNavigation.LearnerTab;
 import com.softech.ls360.pages.leftPanelNavigation.ManagerTab;
@@ -23,6 +24,7 @@ public class HomepageSteps {
     AuthorTab authorTab;
     ManagerTab managerTab;
     ResourcesTab resourcesTab;
+    SearchBar searchBar;
 
     @Step
     public void opens_login_page() {
@@ -289,7 +291,6 @@ public class HomepageSteps {
         String supportForumText = resourcesTab.verifysupportForum();
         return supportForumText;
     }
-
     @Step
     public void openLearnerMode(){
         udpLoginPage.loginLearnerAccount();
@@ -302,5 +303,60 @@ public class HomepageSteps {
         String resource = resourcesTab.verifyResourceTextInLearnerMode();
         return resource;
 
+    }
+
+    @Step
+    public boolean verifySearchButton(){
+        boolean searchbtn = searchBar.verifyInputSearch();
+        return searchbtn;
+    }
+
+    @Step
+    public boolean verifySearchBarButton(){
+
+        boolean seachButtons = searchBar.verifySearchButtons();
+        return seachButtons;
+    }
+
+    @Step
+    public String verifySearchButtonAll(){
+
+        String aa = searchBar.verifySearchButtonsAll();
+        return aa;
+    }
+
+    @Step
+    public String verifySearchButtonNew(){
+
+        String newBtn = searchBar.verifySearchButtonsNew();
+        return newBtn;
+    }
+
+    @Step
+    public String verifySearchButtonStarted(){
+
+        String startedBtn = searchBar.verifySearchButtonsStarted();
+        return startedBtn;
+    }
+
+    @Step
+    public String verifySearchButtonCompleted(){
+
+        String completeBtn = searchBar.verifySearchButtonsCompleted();
+        return completeBtn;
+    }
+
+    @Step
+    public String verifySearchButtonSubscription(){
+
+        String subscriptionBtn = searchBar.verifySearchButtonsSubscription();
+        return subscriptionBtn;
+    }
+
+    @Step
+    public boolean verifySortBtn(){
+
+        boolean sortBtn = searchBar.verifySortBtn();
+        return true;
     }
 }

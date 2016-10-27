@@ -9,12 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by syed.musab on 10/25/2016.
  */
-public class LearnerMode {
-    private static final Logger logger = LoggerFactory.getLogger(LearnerMode.class);
+public class LearnerModeStepDefinition {
+    private static final Logger logger = LoggerFactory.getLogger(LearnerModeStepDefinition.class);
 
     @Steps
     HomepageSteps homepageSteps;
@@ -42,6 +43,9 @@ public class LearnerMode {
 
         assertEquals(homepageSteps.verifyLearnerTitle(), learnerTab);
         assertEquals(homepageSteps.verifyResourceInLearner(), resourceTab);
+
+        assertTrue(homepageSteps.verifySearchButton());
+        logger.info("search input is displayed");
     }
 
 }

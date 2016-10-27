@@ -28,7 +28,7 @@ public class HomepageStepDefinition {
     @Given("^user navigates to signIn page$")
     public void user_navigates_to_signIn_page() throws Throwable {
 
-    homepageSteps.opens_login_page();
+        homepageSteps.opens_login_page();
 
     }
 
@@ -95,6 +95,10 @@ public class HomepageStepDefinition {
 
     @Then("^\"([^\"]*)\" should be displayed in second box with respect to subscription count$")
     public void should_be_displayed_in_second_box_with_respect_to_subscription_count(String subscriptionTitle) throws Throwable {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<------     courses In Your Subscription         ---->");
+        logger.info("<---------------------------------------------------->");
 
         subscriptionTitle = "Courses In Your Subscription";
         assertEquals(homepageSteps.verifySubscriptionTitle(), subscriptionTitle);
