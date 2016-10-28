@@ -47,10 +47,6 @@ public class UdpLoginPage extends PageObject {
 
     public void setValidUsernamePassword() {
 
-        logger.info("<---------------------------------------------------->");
-        logger.info("<------      Starting UDP Login Test           ------>");
-        logger.info("<---------------------------------------------------->");
-
         this.userName.clear();
         this.userName.type(udpUiDataProps.getPropertyValueFromPropertiesFile("udp_valid_userName", UDP_SELENIUM_DATA_PROPERTIES_FILE));
         logger.info("userName Set");

@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
  * Created by syed.musab on 10/19/2016.
  */
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(features= {"src/test/resources/features/home_page_verification"})
+@CucumberOptions(features= {"src/test/resources/features/udp_home_page_verification"})
 public class HeadingVerificationTest {
 }

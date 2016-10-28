@@ -28,6 +28,10 @@ public class HomepageStepDefinition {
     @Given("^user navigates to signIn page$")
     public void user_navigates_to_signIn_page() throws Throwable {
 
+        logger.info("<---------------------------------------------------->");
+        logger.info("<------      Starting UDP Login Test           ------>");
+        logger.info("<---------------------------------------------------->");
+
         homepageSteps.opens_login_page();
 
     }
@@ -40,7 +44,7 @@ public class HomepageStepDefinition {
     }
 
     @Then("^user should be taken to udp homepage$")
-    public void user_should_be_taken_to_udp_homepage() throws Throwable {
+    public void user_should_be_taken_to_udp_homepage()  {
 
         homepageSteps.click_signIn_button();
     }

@@ -1,6 +1,8 @@
 package com.softech.ls360.runners.udp_webtests.steps.serenity;
 
 import com.softech.ls360.jdbc_vu360_qa.DbConnection;
+import com.softech.ls360.jdbc_vu360_qa.DbUdpCourseStatus;
+import com.softech.ls360.pages.homePage.CourseStatus;
 import com.softech.ls360.pages.homePage.CourseType;
 import com.softech.ls360.pages.homePage.SearchBar;
 import com.softech.ls360.pages.leftPanelNavigation.AuthorTab;
@@ -25,6 +27,7 @@ public class HomepageSteps {
     ManagerTab managerTab;
     ResourcesTab resourcesTab;
     SearchBar searchBar;
+    CourseStatus courseStatus;
 
     @Step
     public void opens_login_page() {
@@ -101,9 +104,10 @@ public class HomepageSteps {
     }
 
     @Step
-    public void homepageIsDisplayed(){
+    public boolean homepageIsDisplayed(){
 
-        courseType.homepageDisplayedVerification();
+        boolean aa = courseType.homepageDisplayedVerification();
+        return aa;
     }
 
     @Step
@@ -359,4 +363,48 @@ public class HomepageSteps {
         boolean sortBtn = searchBar.verifySortBtn();
         return true;
     }
+
+    @Step
+    public String getLearnerNewStatusInfo(){
+
+        DbUdpCourseStatus jdbcConnection = new DbUdpCourseStatus();
+        String learnerNewInfoCompleted = jdbcConnection.getLearnerNewStatusCourseInfo();
+        logger.info("Learner Course New status" + learnerNewInfoCompleted);
+        return learnerNewInfoCompleted;
+
+    }
+
+    @Step
+    public String verifyNewStatusCourses(){
+
+        String newStatusCourses = courseStatus.verifyNewCourses();
+        logger.info("Course new in serenity step" + newStatusCourses);
+        return newStatusCourses;
+    }
+
+    @Step
+    public void clickStartedButton(){
+
+        courseStatus.clickStartedBtn();
+    }
+
+    @Step
+    public String verifyStartedStatusCourses(){
+
+        String startedCourses = courseStatus.verifyStartedCourses();
+        logger.info("Course started in serenity step" + startedCourses);
+        return startedCourses;
+
+    }
+
+    @Step
+    public String getLearnerStartedStatusInfo(){
+
+        DbUdpCourseStatus jdbcConnection = new DbUdpCourseStatus();
+        String learnerStartedInfoCompleted = jdbcConnection.getLearnerStartedStatusCourseInfo();
+        logger.info("Learner Course started status" + learnerStartedInfoCompleted);
+        return learnerStartedInfoCompleted;
+
+    }
+
 }

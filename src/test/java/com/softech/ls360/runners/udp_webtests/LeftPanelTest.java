@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
  * Created by syed.musab on 10/21/2016.
  */
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(features= {"src/test/resources/features/leftpanel_menu_verification"})
+@CucumberOptions(features= {"src/test/resources/features/udp_leftpanel_menu_verification"})
 public class LeftPanelTest {
 }

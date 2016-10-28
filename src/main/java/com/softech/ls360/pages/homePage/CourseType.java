@@ -36,9 +36,6 @@ public class CourseType extends PageObject{
     private WebElementFacade courseCountAllCourses;
 
     public String verifyNumberOfMyCourses(){
-        logger.info("<---------------------------------------------------->");
-        logger.info("<------Starting verify Number Of My Courses Test ---->");
-        logger.info("<---------------------------------------------------->");
 
         numberOfMyCourses.waitUntilVisible();
         logger.info("wait here");
@@ -72,9 +69,10 @@ public class CourseType extends PageObject{
 
     }
 
-    public void homepageDisplayedVerification(){
+    public boolean homepageDisplayedVerification(){
         homepageHeader.waitUntilPresent();
         logger.info("header is present");
+        return true;
     }
 
     public String completedCourseCount(){
