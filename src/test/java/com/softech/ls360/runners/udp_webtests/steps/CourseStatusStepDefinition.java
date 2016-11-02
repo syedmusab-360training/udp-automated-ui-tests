@@ -1,15 +1,15 @@
 package com.softech.ls360.runners.udp_webtests.steps;
 
 import com.softech.ls360.runners.udp_webtests.steps.serenity.HomepageSteps;
-import com.softech.ls360.runners.udp_webtests.steps.serenity.StatusCoursesStep;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
+import static org.junit.Assert.*;
 
 /**
  * Created by syed.musab on 10/28/2016.
@@ -20,8 +20,6 @@ public class CourseStatusStepDefinition {
 
     @Steps
     HomepageSteps homepageSteps;
-    StatusCoursesStep statusCoursesStep;
-
 
     @When("^user clicks on New Button from search bar$")
     public void user_clicks_on_New_Button_from_search_bar() {
@@ -53,7 +51,7 @@ public class CourseStatusStepDefinition {
     @Then("^only started status courses should be displayed in that particular branch$")
     public void only_started_status_courses_should_be_displayed_in_that_particular_branch() {
 
-        assertEquals(homepageSteps.getLearnerStartedStatusInfo(), homepageSteps.verifyStartedStatusCourses());
+        assertThat(homepageSteps.getLearnerStartedStatusInfo(), is(equalToIgnoringCase(homepageSteps.verifyStartedStatusCourses())));
 
     }
 

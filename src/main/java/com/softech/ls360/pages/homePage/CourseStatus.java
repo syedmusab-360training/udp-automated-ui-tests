@@ -29,7 +29,7 @@ public class CourseStatus extends PageObject {
     private WebElementFacade startedStatusCourses;
 
     @FindBy(xpath = "//*[@id='wrapper']/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/div/div[2]")
-    private WebElementFacade getStartedstatusCourse2;
+    private WebElementFacade startedstatusCourse2;
 
     public String verifyNewCourses() {
 
@@ -57,7 +57,7 @@ public class CourseStatus extends PageObject {
         startedButton.waitUntilClickable();
         startedButton.click();
 
-        String startedCourse = getStartedstatusCourse2.getText();
+        String startedCourse = startedStatusCourses.getText();
         logger.info("started Course text is here" + startedCourse);
         return startedCourse;
 

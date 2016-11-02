@@ -58,10 +58,11 @@ public class DbUdpCourseStatus {
 
     }
 
+
     public String getLearnerStartedStatusCourseInfo() {
 
-        ResultSet rsStarted = null;
-        Object resultStarted = null;
+        ResultSet rsNew = null;
+        String resultNew = null;
 
         try {
             Class.forName(udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.classname", UDP_COURSE_COUNT_PROPERTIES_FILE));
@@ -71,10 +72,10 @@ public class DbUdpCourseStatus {
             logger.info("-QUERY:" + learnerStartedCourse);
 
             stmt = conn.createStatement();
-            rsStarted = stmt.executeQuery(learnerStartedCourse);
+            rsNew = stmt.executeQuery(learnerStartedCourse);
 
-            if (rsStarted.next()) {
-                resultStarted = rsStarted.getString("NAME");
+            while (rsNew.next()) {
+                resultNew = rsNew.getString(32);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,8 +88,8 @@ public class DbUdpCourseStatus {
             }
         }
 
-        logger.info("Started -Result:->" + resultStarted);
-        return String.valueOf(resultStarted);
+        logger.info("Started -Result:->" + resultNew);
+        return resultNew;
 
     }
 

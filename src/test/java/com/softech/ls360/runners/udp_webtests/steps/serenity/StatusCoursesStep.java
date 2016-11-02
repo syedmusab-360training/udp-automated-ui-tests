@@ -37,10 +37,10 @@ public class StatusCoursesStep {
     }
 
     @Step
-    public String getLearnerStartedStatusInfo(){
+    public Object getLearnerStartedStatusInfo(){
 
         DbUdpCourseStatus jdbcConnection = new DbUdpCourseStatus();
-        String learnerStartedInfoCompleted = jdbcConnection.getLearnerStartedStatusCourseInfo();
+        Object learnerStartedInfoCompleted = jdbcConnection.getLearnerStartedStatusCourseInfo();
         logger.info("Learner Course New status" + learnerStartedInfoCompleted);
         return learnerStartedInfoCompleted;
 

@@ -34,7 +34,7 @@ public class SearchBar extends PageObject {
     @FindBy(css = ".Subscription")
     private WebElementFacade subscriptionButton;
 
-    @FindBy (css = "#wrapper > div.main > div > div.iso-container > ul > li.sorting.ASC > button")
+    @FindBy (xpath = "//*[@id='wrapper']/div[2]/div/div[2]/ul/li[3]/div/button")
     private WebElementFacade sortBtn;
 
     public boolean verifyInputSearch() {
