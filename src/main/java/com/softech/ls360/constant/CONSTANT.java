@@ -85,4 +85,14 @@ public class CONSTANT {
                     "WHERE le.enrollmentstatus =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.enrollmentstatus", UDP_COURSE_COUNT_PROPERTIES_FILE) +
                     "and vu.USERNAME =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.vuUsername", UDP_COURSE_COUNT_PROPERTIES_FILE) +
                     "and status =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCourse.information.status.started", UDP_COURSE_COUNT_PROPERTIES_FILE);
+
+    public static final String COMPLETED_COURSE_STATUS =
+            "select LCS.*, CR.NAME, CR.GUID, CR.COURSETYPE, LE.* from LEARNERENROLLMENT LE\n" +
+                    "INNER JOIN LEARNER L ON LE.LEARNER_ID = L.ID\n" +
+                    "INNER JOIN VU360USER vu ON vu.ID = L.VU360USER_ID\n" +
+                    "INNER JOIN COURSE CR ON CR.ID = LE.COURSE_ID\n" +
+                    "INNER JOIN LEARNERCOURSESTATISTICS LCS ON LCS.LEARNERENROLLMENT_ID = LE.ID\n" +
+                    "WHERE le.enrollmentstatus =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.enrollmentstatus", UDP_COURSE_COUNT_PROPERTIES_FILE) +
+                    "and vu.USERNAME =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.vuUsername", UDP_COURSE_COUNT_PROPERTIES_FILE) +
+                    "and status =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCourse.information.status.completed", UDP_COURSE_COUNT_PROPERTIES_FILE);
 }

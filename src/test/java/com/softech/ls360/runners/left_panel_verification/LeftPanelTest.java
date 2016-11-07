@@ -1,4 +1,4 @@
-package com.softech.ls360.runners.udp_webtests;
+package com.softech.ls360.runners.left_panel_verification;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;

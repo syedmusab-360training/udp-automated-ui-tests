@@ -1,6 +1,6 @@
-package com.softech.ls360.runners.udp_webtests.steps;
+package com.softech.ls360.runners.learner_mode_verification.steps;
 
-import com.softech.ls360.runners.udp_webtests.steps.serenity.HomepageSteps;
+import com.softech.ls360.runners.learner_mode_verification.steps.serenity.LearnerModeSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -18,19 +18,19 @@ public class LearnerModeStepDefinition {
     private static final Logger logger = LoggerFactory.getLogger(LearnerModeStepDefinition.class);
 
     @Steps
-    HomepageSteps homepageSteps;
+    LearnerModeSteps learnerModeSteps;
 
     @Given("^user enters learner mode credentials$")
     public void user_enters_learner_mode_credentials() throws Throwable {
 
-        homepageSteps.opens_login_page();
+       learnerModeSteps.opens_login_page();
 
     }
 
     @When("^user navigate to udp homepage$")
     public void user_navigate_to_udp_homepage() throws Throwable {
 
-        homepageSteps.openLearnerMode();
+        learnerModeSteps.openLearnerMode();
     }
 
     @Then("^user should see \"([^\"]*)\" and \"([^\"]*)\" tab at left panel$")
@@ -38,14 +38,16 @@ public class LearnerModeStepDefinition {
 
         learnerTab = "Learner";
         resourceTab = "Resources";
-        logger.info("Then step" + homepageSteps.verifyLearnerTitle());
-        logger.info("Then step" + homepageSteps.verifyResourceInLearner());
+        logger.info("Then steps" + learnerModeSteps.verifyLearnerTitle());
+        logger.info("Then steps" + learnerModeSteps.verifyResourceInLearner());
 
-        assertEquals(homepageSteps.verifyLearnerTitle(), learnerTab);
-        assertEquals(homepageSteps.verifyResourceInLearner(), resourceTab);
+        assertEquals(learnerModeSteps.verifyLearnerTitle(), learnerTab);
+        assertEquals(learnerModeSteps.verifyResourceInLearner(), resourceTab);
 
-        assertTrue(homepageSteps.verifySearchButton());
+        assertTrue(learnerModeSteps.verifySearchButton());
         logger.info("search input is displayed");
     }
+
+
 
 }

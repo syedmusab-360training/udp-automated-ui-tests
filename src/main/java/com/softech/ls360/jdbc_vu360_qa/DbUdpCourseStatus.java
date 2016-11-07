@@ -93,4 +93,40 @@ public class DbUdpCourseStatus {
 
     }
 
+
+    public String getLearnerCompletedStatusCourseInfo() {
+
+        ResultSet rsNew = null;
+        String resultNew = null;
+
+        try {
+            Class.forName(udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.classname", UDP_COURSE_COUNT_PROPERTIES_FILE));
+            conn = DriverManager.getConnection(URL);
+
+            String learnerCompletedCourse = CONSTANT.COMPLETED_COURSE_STATUS;
+            logger.info("-QUERY:" + learnerCompletedCourse);
+
+            stmt = conn.createStatement();
+            rsNew = stmt.executeQuery(learnerCompletedCourse);
+
+            while (rsNew.next()) {
+                resultNew = rsNew.getString("NAME");
+                logger.info("Completed Course -Result:->" + resultNew);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                stmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        logger.info("Completed Course -Result:->" + resultNew);
+        return resultNew;
+
+    }
+
 }
