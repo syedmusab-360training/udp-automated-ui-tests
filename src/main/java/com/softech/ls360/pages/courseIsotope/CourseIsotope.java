@@ -1,4 +1,4 @@
-package com.softech.ls360.pages.homePage;
+package com.softech.ls360.pages.courseIsotope;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -17,12 +17,15 @@ public class CourseIsotope extends PageObject{
     private WebElementFacade retakeThisCourseBtn;
 
 
-    public void switchToCoursePlayerPage(String actualWindowHandle) {
+    public void clickOnRetakeButton(){
 
         retakeThisCourseBtn.waitUntilClickable();
         logger.info("wait here");
         retakeThisCourseBtn.click();
         logger.info("clicked retake course image");
+    }
+
+    public boolean switchToCoursePlayerPage(String actualWindowHandle) {
 
         for(String coursePlayer : getDriver().getWindowHandles()){
             getDriver().switchTo().window(coursePlayer);
@@ -32,8 +35,8 @@ public class CourseIsotope extends PageObject{
                 e.printStackTrace();
             }
             logger.info("Title is here" + getDriver().getTitle());
-
         }
+        return true;
     }
 
 

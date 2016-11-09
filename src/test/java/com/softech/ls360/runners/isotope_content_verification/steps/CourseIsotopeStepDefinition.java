@@ -8,6 +8,8 @@ import net.thucydides.core.annotations.Steps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.junit.Assert.assertTrue;
+
 /**
  * Created by syed.musab on 11/3/2016.
  */
@@ -37,14 +39,30 @@ public class CourseIsotopeStepDefinition {
     }
 
     @When("^user clicks on retake this course icon or course isotope image\\.$")
-    public void user_clicks_on_retake_this_course_icon_or_course_isotope_image() throws InterruptedException {
+    public void user_clicks_on_retake_this_course_icon_or_course_isotope_image() {
 
+        courseIsotopeStep.clickPlayButton();
 
     }
 
     @Then("^it should popup \"([^\"]*)\" window$")
     public void it_should_popup_window(String actualWindowHandle) {
 
-        courseIsotopeStep.clickRekateCourseBtn(actualWindowHandle);
+        assertTrue(courseIsotopeStep.clickRekateCourseBtn(actualWindowHandle));
+        logger.info("Course Player Launched");
+    }
+
+    @When("^user clicks on course details icon from course isotope$")
+    public void user_clicks_on_course_details_icon_from_course_isotope() {
+
+        courseIsotopeStep.clickCourseInfo();
+
+    }
+
+    @Then("^it should popup about your class popup$")
+    public void it_should_popup_about_your_class_popup() {
+
+        assertTrue(courseIsotopeStep.aboutYourClassPopup());
+        logger.info("Popup is launched");
     }
 }

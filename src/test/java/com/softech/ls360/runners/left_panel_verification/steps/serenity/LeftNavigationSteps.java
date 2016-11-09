@@ -181,4 +181,62 @@ public class LeftNavigationSteps {
 
     }
 
+    @Step
+    public String managerModeWindowIsDisplayed(){
+
+        String managerMode = managerTab.redirectedToLmsManagerModeUserAndGroupScreen();
+        return managerMode;
+
+    }
+
+    @Step
+    public void clickManagerUser(){
+
+        managerTab.clickManagerUser();
+    }
+
+    @Step
+    public void clickCreateManager(){
+
+        authorTab.clickCreateManageButton();
+    }
+
+    @Step
+    public String redirectedToWlcmsAuthor(){
+
+        String authorTitle = authorTab.redirectedToWlcmsAuthor();
+        return authorTitle;
+
+    }
+
+    @Step
+    public String redirectedToEnrollUserPage(){
+
+        String enrollUser = managerTab.redirectedToLmsManagerModePlanAndEnrollScreen();
+        logger.info("enroll user mode" + enrollUser);
+        return enrollUser;
+
+    }
+
+    @Step
+    public void clickEnrollUser(){
+
+        managerTab.clickEnrollUser();
+    }
+
+    @Step
+    public void clickRunReport(){
+
+        managerTab.clickRunReport();
+
+    }
+
+    @Step
+    public String redirectedToLMSRunSummaryScreen(){
+
+        String runReport = managerTab.redirectedToLmsManagerModeRunSummaryScreen();
+        logger.info("Run report text" + runReport);
+        return runReport;
+    }
+
 }

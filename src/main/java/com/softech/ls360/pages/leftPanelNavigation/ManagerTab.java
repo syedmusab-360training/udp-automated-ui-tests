@@ -27,6 +27,13 @@ public class ManagerTab extends PageObject{
     @FindBy(css= "#wrapper > div.sidebar > div > div:nth-child(3) > div > div:nth-child(3) > a")
     private WebElementFacade runReports;
 
+    @FindBy (css = ".logo360")
+    private WebElementFacade managerModeLogo;
+
+    @FindBy(css = "#page-heading")
+    private WebElementFacade managerUser;
+
+
     public String verifymanagerButtonIsDisplayed(){
 
       managerClick.waitUntilVisible();
@@ -40,11 +47,9 @@ public class ManagerTab extends PageObject{
         managerClick.waitUntilVisible();
         managerClick.click();
         logger.info("Clicked");
-
         manageUser.waitUntilVisible();
         String manageUserText = manageUser.getText();
         logger.info("Manage User is here" + manageUserText);
-
         return manageUserText;
 
     }
@@ -73,4 +78,56 @@ public class ManagerTab extends PageObject{
         logger.info("Run Report Text is here"+ runReportText);
         return runReportText;
     }
+
+    public String redirectedToLmsManagerModeUserAndGroupScreen(){
+
+        managerModeLogo.waitUntilPresent();
+        managerModeLogo.waitUntilVisible();
+        String managerUserHeading =  managerUser.getText();
+        logger.info("Manage User text" + managerUserHeading);
+        return managerUserHeading;
+
+    }
+
+    public void clickManagerUser(){
+        managerClick.click();
+        manageUser.waitUntilVisible();
+        manageUser.click();
+    }
+
+    public String redirectedToLmsManagerModePlanAndEnrollScreen(){
+
+        managerModeLogo.waitUntilPresent();
+        managerModeLogo.waitUntilVisible();
+        String enrollUserHeading =  managerUser.getText();
+        logger.info("Enroll User text" + enrollUserHeading);
+        return enrollUserHeading;
+
+    }
+
+    public void clickEnrollUser(){
+
+        managerClick.click();
+        enrollUsers.waitUntilVisible();
+        enrollUsers.click();
+    }
+
+    public void clickRunReport(){
+
+        managerClick.click();
+        runReports.waitUntilClickable();
+        runReports.click();
+
+    }
+
+    public String redirectedToLmsManagerModeRunSummaryScreen(){
+
+        managerModeLogo.waitUntilPresent();
+        managerModeLogo.waitUntilVisible();
+        String runSummaryHeading =  managerUser.getText();
+        logger.info("Summaray text" + runSummaryHeading);
+        return runSummaryHeading;
+
+    }
 }
+

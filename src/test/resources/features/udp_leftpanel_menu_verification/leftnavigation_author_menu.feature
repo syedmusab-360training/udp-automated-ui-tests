@@ -9,3 +9,9 @@ Feature: In order to verify author menu
     Then Verify that on Dashboard page left panel, first submenu should be "Author"
     And Verify under author menu, first tab is "Course Reports"
     And Verify under author menu, second tab "Create & Manage Courses"
+
+  Scenario: Author Submenu Function Verification
+    Given user navigates to signIn page
+    When user enters in udp homepage
+    And Verify that when user clicks on Create and Manage Courses button
+    Then it should be redirected to WLCMS Author Mode screen create courses page

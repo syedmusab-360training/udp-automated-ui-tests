@@ -1,7 +1,8 @@
 package com.softech.ls360.runners.isotope_content_verification.steps.serenity;
 
+import com.softech.ls360.pages.courseIsotope.AboutYourCourse;
 import com.softech.ls360.pages.homePage.CountType;
-import com.softech.ls360.pages.homePage.CourseIsotope;
+import com.softech.ls360.pages.courseIsotope.CourseIsotope;
 import com.softech.ls360.pages.loginPage.UdpLoginPage;
 import net.thucydides.core.annotations.Step;
 import org.slf4j.Logger;
@@ -17,11 +18,13 @@ public class CourseIsotopeStep {
     CourseIsotope courseIsotope;
     UdpLoginPage udpLoginPage;
     CountType countType;
+    AboutYourCourse aboutYourCourse;
 
     @Step
-    public void clickRekateCourseBtn(String actualWindowHandle) {
+    public boolean clickRekateCourseBtn(String actualWindowHandle) {
 
-        courseIsotope.switchToCoursePlayerPage(actualWindowHandle);
+        boolean coursePlayer = courseIsotope.switchToCoursePlayerPage(actualWindowHandle);
+        return coursePlayer;
 
     }
 
@@ -49,5 +52,33 @@ public class CourseIsotopeStep {
         udpLoginPage.open();
     }
 
+    @Step
+    public void clickPlayButton(){
 
+        courseIsotope.clickOnRetakeButton();
+
+    }
+
+
+    @Step
+    public void clickCourseInfo(){
+
+        aboutYourCourse.clickOnCourseInfoButton();
+
+    }
+
+
+    @Step
+    public String aboutYourClassIsDisplayed(){
+
+        String classInfo = aboutYourCourse.aboutYourClassPopup();
+        return classInfo;
+    }
+
+    @Step
+    public boolean aboutYourClassPopup() {
+
+        boolean aa = aboutYourCourse.switchToAboutYourClassPopup();
+        return aa;
+    }
 }

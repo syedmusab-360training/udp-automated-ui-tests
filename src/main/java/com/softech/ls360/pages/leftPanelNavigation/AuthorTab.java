@@ -26,6 +26,9 @@ public class AuthorTab extends PageObject {
     @FindBy (css = "#wrapper > div.sidebar > div > div:nth-child(2) > div > div:nth-child(2) > a")
     private WebElementFacade createManage;
 
+    @FindBy(css = "#breadcrumbs > ol > li:nth-child(1)")
+    private WebElementFacade authorTitle;
+
     public String clickAuthorTab(){
 
         logger.info("<---------------------------------------------------->");
@@ -52,17 +55,35 @@ public class AuthorTab extends PageObject {
         logger.info("<--------------------------------------------------------------------->");
 
         authorClick.waitUntilVisible();
-        logger.info("Clicked");
-
         createManage.waitUntilVisible();
 
         String createManagerCourseText = createManage.getText();
         logger.info("Create & Manage courses text is here"+ createManagerCourseText);
-
         return  createManagerCourseText;
 
     }
 
+    public void clickCreateManageButton(){
+
+        authorClick.waitUntilVisible();
+        authorClick.click();
+        logger.info("Clicked");
+
+        createManage.waitUntilClickable();
+        createManage.click();
+
+    }
+
+
+    public String redirectedToWlcmsAuthor(){
+
+        authorTitle.waitUntilPresent();
+        authorTitle.waitUntilVisible();
+        String authorTitleText =  authorTitle.getText();
+        logger.info("Author User text" + authorTitleText);
+        return authorTitleText;
+
+    }
 
 }
 

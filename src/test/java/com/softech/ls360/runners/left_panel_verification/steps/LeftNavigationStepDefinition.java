@@ -70,7 +70,7 @@ public class LeftNavigationStepDefinition {
     }
 
     @Then("^Verify that first tab is \"([^\"]*)\"$")
-    public void verify_that_first_tab_is(String myCoursesTab) throws Throwable {
+    public void verify_that_first_tab_is(String myCoursesTab){
 
         myCoursesTab = "My Courses";
         assertEquals(leftNavigationSteps.verifyMycoursesfromLeftPanel(), myCoursesTab);
@@ -93,7 +93,7 @@ public class LeftNavigationStepDefinition {
     }
 
     @Then("^Verify that third tab is \"([^\"]*)\"$")
-    public void verify_that_third_tab_is(String transCert) throws Throwable {
+    public void verify_that_third_tab_is(String transCert) {
         transCert = "Transcripts & Certificates";
         assertEquals(leftNavigationSteps.verifyTransCertFromLeftPanel(), transCert);
     }
@@ -168,6 +168,66 @@ public class LeftNavigationStepDefinition {
 
         resourcesSubheading = "Resources";
         assertEquals(leftNavigationSteps.verifyResourcesTitle(), resourcesSubheading);
+    }
 
+    @When("^Verify that when user clicks on Manager User button$")
+    public void verify_that_when_user_clicks_on_Manager_User_button() {
+
+        leftNavigationSteps.homepageIsDisplayed();
+        leftNavigationSteps.clickManagerUser();
+
+    }
+
+    @Then("^it should be redirected to LMS Manager Mode screen manage users and Groups page$")
+    public void it_should_be_redirected_to_LMS_Manager_Mode_screen_manage_users_and_Groups_page() {
+
+        assertEquals(leftNavigationSteps.managerModeWindowIsDisplayed(), "Manage Users");
+        logger.info("Manager Mode is displayed");
+    }
+
+    @When("^Verify that when user clicks on Create and Manage Courses button$")
+    public void verify_that_when_user_clicks_on_Create_and_Manage_Courses_button() {
+
+        leftNavigationSteps.homepageIsDisplayed();
+        leftNavigationSteps.clickCreateManager();
+
+    }
+
+    @Then("^it should be redirected to WLCMS Author Mode screen create courses page$")
+    public void it_should_be_redirected_to_WLCMS_Author_Mode_screen_create_courses_page() {
+        assertEquals(leftNavigationSteps.redirectedToWlcmsAuthor(), "Author, Teach, and Sell");
+        logger.info("Author Mode is displayed");
+
+    }
+
+    @When("^Verify that when user clicks on Enroll Users button$")
+    public void verify_that_when_user_clicks_on_Enroll_Users_button() {
+
+        leftNavigationSteps.homepageIsDisplayed();
+        leftNavigationSteps.clickEnrollUser();
+
+    }
+
+    @Then("^it should be redirected to LMS Manager Mode plan and enroll page\\.$")
+    public void it_should_be_redirected_to_LMS_Manager_Mode_plan_and_enroll_page() {
+
+        assertEquals(leftNavigationSteps.redirectedToEnrollUserPage(), "Enroll");
+        logger.info("Enroll Mode is displayed");
+
+    }
+
+    @When("^Verify that when user clicks on Run Reports button$")
+    public void verify_that_when_user_clicks_on_Run_Reports_button() {
+
+        leftNavigationSteps.homepageIsDisplayed();
+        leftNavigationSteps.clickRunReport();
+
+    }
+
+    @Then("^it should be redirected to LMS Manager Mode, Report Summary Page$")
+    public void it_should_be_redirected_to_LMS_Manager_Mode_Report_Summary_Page() {
+
+        assertEquals(leftNavigationSteps.redirectedToLMSRunSummaryScreen(), "Report Summary");
+        logger.info("Report Summary Mode is displayed");
     }
 }
