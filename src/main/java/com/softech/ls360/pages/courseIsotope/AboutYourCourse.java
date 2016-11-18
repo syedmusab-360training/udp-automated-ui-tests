@@ -19,6 +19,8 @@ public class AboutYourCourse extends PageObject{
     @FindBy(xpath = "//*[@id='dashboard']/div/div[3]/div[1]/div/div/div/div/div[1]/h2")
     private WebElementFacade aboutYourClass;
 
+    @FindBy (css = ".close")
+    private WebElementFacade aboutYourClassCloseButton;
 
     public void clickOnCourseInfoButton(){
 
@@ -30,7 +32,7 @@ public class AboutYourCourse extends PageObject{
     public String aboutYourClassPopup(){
 
         aboutYourClass.waitUntilPresent();
-        String aboutYourClassInfo =  aboutYourClass.getText();
+        String aboutYourClassInfo = aboutYourClass.getText();
         logger.info("Course Info Title text" + aboutYourClass);
         return aboutYourClassInfo;
 
@@ -51,9 +53,11 @@ public class AboutYourCourse extends PageObject{
             }
 
             logger.info("about your class title is here" + getDriver().getTitle());
-
+            aboutYourClassCloseButton.click();
         }
         return true;
     }
+
+
 
 }

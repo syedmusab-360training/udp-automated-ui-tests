@@ -28,11 +28,14 @@ public class CourseType extends PageObject {
     @FindBy(css = ".filters.All")
     private WebElementFacade searchBar;
 
-    @FindBy(xpath = "//*[@id='wrapper']/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div/div[2]")
+    @FindBy(xpath = "//*[@id='wrapper']/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/div/div[2]")
     private WebElementFacade startedStatusCourses;
 
-    @FindBy(xpath = "//*[@id='wrapper']/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/div/div[2]")
-    private WebElementFacade startedstatusCourse2;
+    @FindBy(css = "div:nth-child(4) > div > div.iso-title")
+    private WebElementFacade completedstatusCourse2;
+
+    @FindBy(xpath = ".iso-container.fixed>div>div>div")
+    private WebElementFacade udpContainer;
 
     public String verifyNewCourses() {
 
@@ -41,8 +44,16 @@ public class CourseType extends PageObject {
         newButton.click();
 
         String newCourse = newStatusCourse.getText();
-        logger.info("New Course text is here" + newCourse);
-        return newCourse;
+
+        if (newCourse.isEmpty()) {
+            return null;
+        }
+        else {
+            logger.info("New course text is here" + newCourse);
+            return newCourse;
+
+        }
+
 
     }
 
@@ -65,13 +76,12 @@ public class CourseType extends PageObject {
 
     }
 
-    public String verifyCompletedCourses(){
+    public String verifyCompletedCourses() {
 
         startedButton.waitUntilClickable();
         completedButton.waitUntilClickable();
-        String completedCourse = startedStatusCourses.getText();
+        String completedCourse = completedstatusCourse2.getText();
         logger.info("Completed Courses are here" + completedCourse);
-
         return completedCourse;
 
     }

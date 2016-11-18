@@ -13,9 +13,8 @@ public class CourseIsotope extends PageObject{
 
     private static final Logger logger = LoggerFactory.getLogger(CourseIsotope.class);
 
-    @FindBy (css = "#wrapper > div.main > div > div.iso-container > div:nth-child(3) > div > div:nth-child(1) > div:nth-child(1) > div > div.iso-bottom-options > div > a.retake-icon")
+    @FindBy (css = ".iso-main-btn.retake")
     private WebElementFacade retakeThisCourseBtn;
-
 
     public void clickOnRetakeButton(){
 

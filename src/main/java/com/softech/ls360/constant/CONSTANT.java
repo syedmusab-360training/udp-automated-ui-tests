@@ -87,7 +87,7 @@ public class CONSTANT {
                     "and status =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCourse.information.status.started", UDP_COURSE_COUNT_PROPERTIES_FILE);
 
     public static final String COMPLETED_COURSE_STATUS =
-            "select LCS.*, CR.NAME, CR.GUID, CR.COURSETYPE, LE.* from LEARNERENROLLMENT LE\n" +
+                    "select NAME = 'MUAT_March 12_SWOT testing', LCS.*, CR.NAME, CR.GUID, CR.COURSETYPE, LE.* from LEARNERENROLLMENT LE\n" +
                     "INNER JOIN LEARNER L ON LE.LEARNER_ID = L.ID\n" +
                     "INNER JOIN VU360USER vu ON vu.ID = L.VU360USER_ID\n" +
                     "INNER JOIN COURSE CR ON CR.ID = LE.COURSE_ID\n" +
@@ -95,4 +95,10 @@ public class CONSTANT {
                     "WHERE le.enrollmentstatus =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.enrollmentstatus", UDP_COURSE_COUNT_PROPERTIES_FILE) +
                     "and vu.USERNAME =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.vuUsername", UDP_COURSE_COUNT_PROPERTIES_FILE) +
                     "and status =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCourse.information.status.completed", UDP_COURSE_COUNT_PROPERTIES_FILE);
+
+    public static final String COURSE_TIME_SPENT =
+            "select totaltimeinseconds from learnercoursestatistics lcs\n" +
+                    "INNER JOIN learnerenrollment le ON le.id = lcs.learnerenrollment_id\n" +
+                    "INNER JOIN Course c ON c.id = le.course_id\n" +
+                    "where c.name = 'Test Automation - Test Course'\n";
 }

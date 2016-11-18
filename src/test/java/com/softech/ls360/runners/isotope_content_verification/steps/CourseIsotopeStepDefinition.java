@@ -64,5 +64,14 @@ public class CourseIsotopeStepDefinition {
 
         assertTrue(courseIsotopeStep.aboutYourClassPopup());
         logger.info("Popup is launched");
+
     }
+
+    @Then("^course isotopes displays Time Spent for online courses$")
+    public void course_isotopes_displays_Time_Spent_for_online_courses() {
+
+       assertTrue(courseIsotopeStep.courseTimeSpentInfoIsDisplayed());
+    }
+
+
 }

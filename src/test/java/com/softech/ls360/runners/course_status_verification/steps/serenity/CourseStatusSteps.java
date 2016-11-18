@@ -1,6 +1,7 @@
 package com.softech.ls360.runners.course_status_verification.steps.serenity;
 
 import com.softech.ls360.jdbc_vu360_qa.DbUdpCourseStatus;
+import com.softech.ls360.pages.courseIsotope.ClassroomGearDropdown;
 import com.softech.ls360.pages.homePage.CountType;
 import com.softech.ls360.pages.homePage.CourseType;
 import com.softech.ls360.pages.loginPage.UdpLoginPage;
@@ -18,6 +19,7 @@ public class CourseStatusSteps {
     CountType countType;
     CourseType courseType;
     UdpLoginPage udpLoginPage;
+    ClassroomGearDropdown classroomGearDropdown;
 
     @Step
     public void opens_login_page() {
@@ -73,6 +75,8 @@ public class CourseStatusSteps {
         String newStatusCourses = courseType.verifyNewCourses();
         logger.info("Course new in serenity steps" + newStatusCourses);
         return newStatusCourses;
+
+
     }
 
     @Step
@@ -112,4 +116,5 @@ public class CourseStatusSteps {
         return startedCourses;
 
     }
+
 }

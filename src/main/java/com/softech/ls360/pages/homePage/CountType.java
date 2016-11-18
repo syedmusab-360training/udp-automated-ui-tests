@@ -56,9 +56,6 @@ public class CountType extends PageObject{
     }
 
     public String coursesYouHaveCompleted(){
-        logger.info("<---------------------------------------------------->");
-        logger.info("<------Starting verify courses You Have Completed---->");
-        logger.info("<---------------------------------------------------->");
 
         coursesYouHaveCompleted.waitUntilVisible();
         logger.info("wait here");
@@ -96,7 +93,7 @@ public class CountType extends PageObject{
 
         courseCountAllCourses.waitUntilVisible();
         String countAllCourses = courseCountAllCourses.getText();
-        return  countAllCourses;
+        return countAllCourses;
     }
 
 }
