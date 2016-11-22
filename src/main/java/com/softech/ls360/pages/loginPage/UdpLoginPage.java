@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
  * Created by syed.musab on 10/14/2016.
  */
 
-@DefaultUrl("http://qa-udp-1.360training.com:8080/LS360Dashboard/login")
+@DefaultUrl("/LS360Dashboard/login")
 public class UdpLoginPage extends PageObject {
 
     private static final Logger logger = LoggerFactory.getLogger(UdpLoginPage.class);
