@@ -51,7 +51,6 @@ public class HomepageContentStepDefinition {
         homepageContentSteps.homepageIsDisplayed();
     }
 
-
     @Then("^\"([^\"]*)\" should be displayed in first box with respect to all courses count$")
     public void should_be_displayed_in_first_box_with_respect_to_all_courses_count(String numberOfCourses) throws Throwable {
 

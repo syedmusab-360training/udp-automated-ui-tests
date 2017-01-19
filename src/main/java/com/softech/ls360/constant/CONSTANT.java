@@ -14,9 +14,7 @@ public class CONSTANT {
     private static final String UDP_COURSE_COUNT_PROPERTIES_FILE = "properties/udp_selenium_data.properties";
     private static getPropertyValueFromPropertiesFile udpsqlqueries = new getPropertyValueFromPropertiesFile();
 
-
     // !!------Queries for Learner Course Count - Completed Courses---!!
-
     public static final String LEARNERCOUNT_COMPLETED =
 
             "select COUNT(LE.ID) from LEARNERENROLLMENT LE\n" +
@@ -31,7 +29,6 @@ public class CONSTANT {
                     UDP_COURSE_COUNT_PROPERTIES_FILE);
 
     // !!------Queries for Learner Course Count - Subscription Courses---!!
-
     public static final String LEARNERCOUNT_SUBSCRIPTION =
             "select COUNT(LE.ID) from LEARNERENROLLMENT LE\n" +
                     "INNER JOIN LEARNER L ON LE.LEARNER_ID = L.ID\n" +
@@ -50,7 +47,6 @@ public class CONSTANT {
 
 
     // !!------Queries for Learner Course Count - All Courses Count---!!
-
     public static final String LEARNERCOUNT_ALL =
             "select COUNT(LE.ID) from LEARNERENROLLMENT LE\n" +
                     "INNER JOIN LEARNER L ON LE.LEARNER_ID = L.ID\n" +
@@ -87,7 +83,7 @@ public class CONSTANT {
                     "and status =" + udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCourse.information.status.started", UDP_COURSE_COUNT_PROPERTIES_FILE);
 
     public static final String COMPLETED_COURSE_STATUS =
-                    "select NAME = 'MUAT_March 12_SWOT testing', LCS.*, CR.NAME, CR.GUID, CR.COURSETYPE, LE.* from LEARNERENROLLMENT LE\n" +
+            "select NAME = 'MUAT_March 12_SWOT testing', LCS.*, CR.NAME, CR.GUID, CR.COURSETYPE, LE.* from LEARNERENROLLMENT LE\n" +
                     "INNER JOIN LEARNER L ON LE.LEARNER_ID = L.ID\n" +
                     "INNER JOIN VU360USER vu ON vu.ID = L.VU360USER_ID\n" +
                     "INNER JOIN COURSE CR ON CR.ID = LE.COURSE_ID\n" +

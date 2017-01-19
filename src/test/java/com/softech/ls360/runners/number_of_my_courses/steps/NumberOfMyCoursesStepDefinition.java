@@ -32,7 +32,8 @@ public class NumberOfMyCoursesStepDefinition {
         logger.info("<------      Starting LMS Login Test           ------>");
         logger.info("<---------------------------------------------------->");
 
-        numberOfMyCoursesSteps.opens_login_page();
+        //numberOfMyCoursesSteps.opens_login_page();
+        numberOfMyCoursesSteps.openLmsPortal();
 
 
     }

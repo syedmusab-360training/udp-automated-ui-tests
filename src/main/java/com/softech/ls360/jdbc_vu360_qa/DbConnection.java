@@ -12,17 +12,17 @@ import java.sql.*;
  */
 public class DbConnection {
 
-        private static final Logger logger = LoggerFactory.getLogger(DbConnection.class);
-        private static final String UDP_COURSE_COUNT_PROPERTIES_FILE = "properties/udp_selenium_data.properties";
-        private getPropertyValueFromPropertiesFile udpsqlqueries = new getPropertyValueFromPropertiesFile();
+    private static final Logger logger = LoggerFactory.getLogger(DbConnection.class);
+    private static final String UDP_COURSE_COUNT_PROPERTIES_FILE = "properties/udp_selenium_data.properties";
+    private getPropertyValueFromPropertiesFile udpsqlqueries = new getPropertyValueFromPropertiesFile();
 
-        String URL = udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.url", UDP_COURSE_COUNT_PROPERTIES_FILE) +
-                udpsqlqueries.getPropertyValueFromPropertiesFile("connection.com.lms.database.database.lms", UDP_COURSE_COUNT_PROPERTIES_FILE) +
-                udpsqlqueries.getPropertyValueFromPropertiesFile("connection.com.lms.database.database.username", UDP_COURSE_COUNT_PROPERTIES_FILE) +
-                udpsqlqueries.getPropertyValueFromPropertiesFile("connection.com.lms.database.database.password", UDP_COURSE_COUNT_PROPERTIES_FILE);
+    String URL = udpsqlqueries.getPropertyValueFromPropertiesFile("learnerCount.information.url", UDP_COURSE_COUNT_PROPERTIES_FILE) +
+            udpsqlqueries.getPropertyValueFromPropertiesFile("connection.com.lms.database.database.lms", UDP_COURSE_COUNT_PROPERTIES_FILE) +
+            udpsqlqueries.getPropertyValueFromPropertiesFile("connection.com.lms.database.database.username", UDP_COURSE_COUNT_PROPERTIES_FILE) +
+            udpsqlqueries.getPropertyValueFromPropertiesFile("connection.com.lms.database.database.password", UDP_COURSE_COUNT_PROPERTIES_FILE);
 
-        Connection conn = null;
-        Statement stmt = null;
+    Connection conn = null;
+    Statement stmt = null;
 
     public int getLearnerCountCompletedInfo() {
 
@@ -73,16 +73,12 @@ public class DbConnection {
             stmt = conn.createStatement();
             rsSubscription = stmt.executeQuery(learnerSubscription);
 
-            if (rsSubscription.next()){
+            if (rsSubscription.next()) {
                 resultSubscription = rsSubscription.getInt(1);
             }
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
             try {
                 stmt.close();
                 conn.close();
@@ -91,7 +87,7 @@ public class DbConnection {
             }
         }
 
-        logger.info("-Result:->"+ resultSubscription);
+        logger.info("-Result:->" + resultSubscription);
         return resultSubscription;
 
     }
@@ -111,16 +107,12 @@ public class DbConnection {
             stmt = conn.createStatement();
             rsCoursesAll = stmt.executeQuery(learnerCountAllInfo);
 
-            if (rsCoursesAll.next()){
+            if (rsCoursesAll.next()) {
                 resultCountAll = rsCoursesAll.getInt(1);
             }
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
             try {
                 stmt.close();
                 conn.close();
@@ -129,11 +121,11 @@ public class DbConnection {
             }
         }
 
-        logger.info("-Result:->"+ resultCountAll);
+        logger.info("-Result:->" + resultCountAll);
         return resultCountAll;
 
     }
 
-    }
+}
 
 

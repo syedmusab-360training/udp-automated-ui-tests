@@ -122,5 +122,11 @@ public class NumberOfMyCoursesSteps {
     }
 
 
+    @Step
+    public void openLmsPortal(){
+
+      lmsLearnerMode.lmsGetCurrentUrl();
+
+    }
 }
 

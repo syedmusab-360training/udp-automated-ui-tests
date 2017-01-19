@@ -10,32 +10,32 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by syed.musab on 10/19/2016.
  */
-public class CountType extends PageObject{
+public class CountType extends PageObject {
 
     private static final Logger logger = LoggerFactory.getLogger(LearnerTab.class);
 
-    @FindBy (css = "#wrapper > nav")
+    @FindBy(css = ".navbar-fixed-top")
     WebElementFacade homepageHeader;
 
     @FindBy(css = "#wrapper > div.main > div > div.statistics > div:nth-child(1) > div > span")
     private WebElementFacade numberOfMyCourses;
 
-    @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(2) > div > span")
+    @FindBy(css = "#wrapper > div.main > div > div.statistics > div:nth-child(2) > div > span")
     private WebElementFacade coursesInYourSubscription;
 
-    @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(3) > div > span")
+    @FindBy(css = "#wrapper > div.main > div > div.statistics > div:nth-child(3) > div > span")
     private WebElementFacade coursesYouHaveCompleted;
 
-    @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(3) > div > h4")
+    @FindBy(css = "#wrapper > div.main > div > div.statistics > div:nth-child(3) > div > h4")
     private WebElementFacade completedCourseCount;
 
-    @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(2) > div > h4")
+    @FindBy(css = "#wrapper > div.main > div > div.statistics > div:nth-child(2) > div > h4")
     private WebElementFacade subscriptionCourseCount;
 
-    @FindBy (css = "#wrapper > div.main > div > div.statistics > div:nth-child(1) > div > h4")
+    @FindBy(css = "#wrapper > div.main > div > div.statistics > div:nth-child(1) > div > h4")
     private WebElementFacade courseCountAllCourses;
 
-    public String verifyNumberOfMyCourses(){
+    public String verifyNumberOfMyCourses() {
 
         numberOfMyCourses.waitUntilVisible();
         logger.info("wait here");
@@ -46,7 +46,7 @@ public class CountType extends PageObject{
 
     }
 
-    public String coursesInYourSubscription(){
+    public String coursesInYourSubscription() {
 
         coursesInYourSubscription.waitUntilVisible();
         String Subscription = coursesInYourSubscription.getText();
@@ -55,7 +55,7 @@ public class CountType extends PageObject{
 
     }
 
-    public String coursesYouHaveCompleted(){
+    public String coursesYouHaveCompleted() {
 
         coursesYouHaveCompleted.waitUntilVisible();
         logger.info("wait here");
@@ -66,13 +66,13 @@ public class CountType extends PageObject{
 
     }
 
-    public boolean homepageDisplayedVerification(){
+    public boolean homepageDisplayedVerification() {
         homepageHeader.waitUntilPresent();
         logger.info("header is present");
         return true;
     }
 
-    public String completedCourseCount(){
+    public String completedCourseCount() {
 
         completedCourseCount.waitUntilVisible();
         String udpCompleedCourseCount = completedCourseCount.getText();
@@ -81,7 +81,7 @@ public class CountType extends PageObject{
     }
 
 
-    public String subscriptionCourseCount (){
+    public String subscriptionCourseCount() {
 
         subscriptionCourseCount.waitUntilVisible();
         String udpSubscriptionCourseCount = subscriptionCourseCount.getText();
@@ -89,7 +89,7 @@ public class CountType extends PageObject{
     }
 
 
-    public String getCourseCountAll(){
+    public String getCourseCountAll() {
 
         courseCountAllCourses.waitUntilVisible();
         String countAllCourses = courseCountAllCourses.getText();

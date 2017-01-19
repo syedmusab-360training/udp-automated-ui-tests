@@ -49,7 +49,6 @@ public class ClassroomGearDropdown extends PageObject {
         logger.info("gear button is displayed");
         gearIcon.waitUntilClickable();
         gearIcon.click();
-
     }
 
     public String clickPrepareForClass() {
@@ -58,6 +57,7 @@ public class ClassroomGearDropdown extends PageObject {
         prepareForClass.waitUntilClickable();
         String classroomDropdown1 = prepareForClass.getText();
         prepareForClass.click();
+        logger.info("clicked dropdown button");
         return classroomDropdown1;
     }
 
@@ -84,7 +84,7 @@ public class ClassroomGearDropdown extends PageObject {
         gearIcon.waitUntilClickable();
         gearIcon.click();
 
-        logger.info("clicking dropdown button check your system");
+        logger.info("clicking dropdown button, check your system");
         checkYourSystem.waitUntilClickable();
         String classroomDropdown2 = checkYourSystem.getText();
         checkYourSystem.click();
@@ -98,7 +98,7 @@ public class ClassroomGearDropdown extends PageObject {
         gearIcon.waitUntilClickable();
         gearIcon.click();
 
-        logger.info("clicking dropdown button networkAndBandwidth");
+        logger.info("clicking dropdown button, networkAndBandwidth");
         networkAndBandwidthBtn.waitUntilClickable();
         String classroomDropdown3 = networkAndBandwidthBtn.getText();
         networkAndBandwidthBtn.click();

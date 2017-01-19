@@ -77,28 +77,36 @@ public class LmsLearnerMode extends PageObject {
     @FindBy (css = ".btn.btn-primary")
     private WebElementFacade udpSignInButton;
 
+    public void lmsGetCurrentUrl(){
+
+        getDriver().get(udpUiDataProps.getPropertyValueFromPropertiesFile("lms_qa_url", UDP_SELENIUM_DATA_PROPERTIES_FILE));
+
+    }
+
     public void setUdpValidUsernamePassword() {
 
         this.udpUserName.clear();
         this.udpUserName.type(udpUiDataProps.getPropertyValueFromPropertiesFile("udp_valid_userName", UDP_SELENIUM_DATA_PROPERTIES_FILE));
-        logger.info("userName Set");
+        logger.info("userName provided");
 
         this.udpPassword.clear();
         this.udpPassword.sendKeys(udpUiDataProps.getPropertyValueFromPropertiesFile("udp_valid_password", UDP_SELENIUM_DATA_PROPERTIES_FILE));
-        logger.info("Password Set");
+        logger.info("Password provided");
     }
+
 
     public void setValidUsernamePassword() {
 
+        getDriver().get("https://qa-lms.360training.com/lms/login.do");
         lmsUserName.waitUntilVisible();
         this.lmsUserName.clear();
         this.lmsUserName.type(udpUiDataProps.getPropertyValueFromPropertiesFile("lms_qa_userName", UDP_SELENIUM_DATA_PROPERTIES_FILE));
-        logger.info("userName Set");
+        logger.info("userName provided");
 
         lmsUserPassword.waitUntilVisible();
         this.lmsUserPassword.clear();
         this.lmsUserPassword.type(udpUiDataProps.getPropertyValueFromPropertiesFile("lms_qa_password", UDP_SELENIUM_DATA_PROPERTIES_FILE));
-        logger.info("Password Set");
+        logger.info("Password provided");
 
         signInButton.waitUntilClickable();
         signInButton.click();

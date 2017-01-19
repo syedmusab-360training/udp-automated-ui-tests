@@ -23,9 +23,9 @@ public class AboutYourCourse extends PageObject{
     private WebElementFacade aboutYourClassCloseButton;
 
     public void clickOnCourseInfoButton(){
-
         courseInfo.waitUntilClickable();
         courseInfo.click();
+        logger.info("Course Information Button is clicked");
     }
 
 
@@ -42,7 +42,7 @@ public class AboutYourCourse extends PageObject{
 
         aboutYourClass.waitUntilPresent();
         String aboutYourClassInfo =  aboutYourClass.getText();
-        logger.info("Course Info Title text" + aboutYourClassInfo);
+        logger.info("Course Info Title" + aboutYourClassInfo);
 
         for(String aboutYourClass : getDriver().getWindowHandles()){
             getDriver().switchTo().window(aboutYourClass);
@@ -52,7 +52,7 @@ public class AboutYourCourse extends PageObject{
                 e.printStackTrace();
             }
 
-            logger.info("about your class title is here" + getDriver().getTitle());
+            logger.info("about your class title" + getDriver().getTitle());
             aboutYourClassCloseButton.click();
         }
         return true;

@@ -39,16 +39,12 @@ public class DbCourseTimeSpent {
             stmt = conn.createStatement();
             rsTimeSpent = stmt.executeQuery(learnerCourseTimeSpentInfo);
 
-            if (rsTimeSpent.next()){
+            if (rsTimeSpent.next()) {
                 resultTimeSpent = rsTimeSpent.getInt(1);
             }
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
             try {
                 stmt.close();
                 conn.close();
@@ -57,7 +53,7 @@ public class DbCourseTimeSpent {
             }
         }
 
-        logger.info("-Result:->"+ resultTimeSpent);
+        logger.info("-Result:->" + resultTimeSpent);
         return resultTimeSpent;
 
     }
